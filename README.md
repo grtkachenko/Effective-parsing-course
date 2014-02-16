@@ -1,4 +1,0 @@
-Perl
-====
-
-Small Perl projects
