@@ -1,4 +1,4 @@
 #!/usr/bin/perl
 while (<>) {
-    print if /\b\d(\d)*\b/;
+    print if /\b(\w(\w)*)\g1\b/;
 }
