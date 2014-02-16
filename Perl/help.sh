@@ -1,6 +1,7 @@
 #!/bin/bash
-for I in {102..111}
+
+for I in {202..210}
 do
     echo $I.pl
-    cp 101.pl $I.pl
+    cp $1.pl $I.pl
 done
