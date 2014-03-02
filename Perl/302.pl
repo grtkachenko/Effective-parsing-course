@@ -5,6 +5,8 @@ my $is_first = 1;
 my $need_to_print = 0;
 
 while (<>) {
+    s/\<(.)*?\>//g;
+    
     if (/[^\s]/) {
         if ($need_to_print && !$is_first) {
             print "\n";
