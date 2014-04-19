@@ -38,12 +38,12 @@ OPERAND -> 'a'|'b'|...|'z'
 
 |             | FIRST      |     FOLLOW    |
 |:------------|:----------:|:-------------:|
-| BOOLEXP     |  nc(       | xo            |
-| BOOLEXP'    |     e xo   |               |
-| TERM        |  nc(       |               |
-| TERM'       |     ea     |               |
-| FACTOR      |  nc(       |               |
-| OPERAND     |   c        |               |
+| BOOLEXP     |  nc(       | $)            |
+| BOOLEXP'    |     e xo   | $)            |
+| TERM        |  nc(       | $)  xo        |
+| TERM'       |     ea     | $)  xo        |
+| FACTOR      |  nc(       | $)  xoa       |
+| OPERAND     |   c        | $)  xoa       |
 
 e - epsilon    
 c - a..z    
