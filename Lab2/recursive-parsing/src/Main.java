@@ -1,3 +1,6 @@
+import org.StructureGraphic.v1.DSTreeNode;
+import org.StructureGraphic.v1.DSutils;
+
 import java.text.ParseException;
 import java.util.*;
 import java.io.*;
@@ -9,6 +12,7 @@ public class Main {
     public void solve() throws IOException {
         try {
             Tree tree = new Parser().parse(new FileInputStream("input.txt"));
+            DSutils.show(tree, 100, 50);
             System.out.println(tree);
         } catch (ParseException e) {
             e.printStackTrace();

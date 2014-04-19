@@ -1,3 +1,6 @@
+import org.StructureGraphic.v1.DSTreeNode;
+
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,27 +10,38 @@ import java.util.List;
  * Date: 19.04.14
  * Time: 17:37
  */
-public class Tree {
-    String node;
+public class Tree implements DSTreeNode {
+    public static final String EPSILON = "epsilon";
+    public static final String BOOLEXP = "BOOLEAXNP";
+    public static final String BOOLEXP_PRIME = "BOOLEXP'";
+    public static final String TERM = "TERM";
+    public static final String TERM_PRIME = "TERM'";
+    public static final String FACTOR = "FACTOR'";
+    public static final String XOR = "xor";
+    public static final String OR = "or";
+    public static final String AND = "and";
+    public static final String NOT = "not";
 
-    List<Tree> children;
 
-    public Tree(String node, Tree... children) {
-        this.node = node;
+    private String nodeName;
+    private List<Tree> children;
+
+    public Tree(String nodeName, Tree... children) {
+        this.nodeName = nodeName;
         this.children = Arrays.asList(children);
     }
 
-    public Tree(String node) {
-        this.node = node;
+    public Tree(String nodeName) {
+        this.nodeName = nodeName;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Node : " + node + "; Children :");
+        builder.append("Node : " + nodeName + "; Children :");
         if (children != null) {
             for (Tree child : children) {
-                builder.append(child.node + ", ");
+                builder.append(child.nodeName + ", ");
             }
 
             for (Tree child : children) {
@@ -36,5 +50,23 @@ public class Tree {
 
         }
         return builder.toString();
+    }
+
+    @Override
+    public DSTreeNode[] DSgetChildren() {
+        return children != null ? children.toArray(new DSTreeNode[children.size()]) : new DSTreeNode[0];
+    }
+
+    @Override
+    public Object DSgetValue() {
+        return nodeName;
+    }
+
+    @Override
+    public Color DSgetColor() {
+        if (EPSILON.equals(nodeName)) {
+            return Color.BLUE;
+        }
+        return children == null ? Color.RED : null;
     }
 }

@@ -1,1 +1,1 @@
-(a and b) or not (c)
+(a and b) or not not (c and b)

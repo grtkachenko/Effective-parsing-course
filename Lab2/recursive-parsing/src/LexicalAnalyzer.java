@@ -14,6 +14,7 @@ public class LexicalAnalyzer {
     private int curChar;
     private int curPos;
     private Token curToken;
+    private char lastOperandChar;
 
     public LexicalAnalyzer(InputStream is) throws ParseException {
         this.is = is;
@@ -54,6 +55,8 @@ public class LexicalAnalyzer {
                 if (!isLetter(curChar)) {
                     throw new ParseException("Illegal character" + (char) curChar, curPos);
                 }
+                char prevLastOperandChar = lastOperandChar;
+                lastOperandChar = (char) curChar;
                 switch (curChar) {
                     case 'a':
                         curToken = checkForWord("and") ? Token.AND : Token.CHAR;
@@ -72,6 +75,9 @@ public class LexicalAnalyzer {
                         curToken = Token.CHAR;
 
                 }
+                if (curToken != Token.CHAR) {
+                    lastOperandChar = prevLastOperandChar;
+                }
         }
     }
 
@@ -81,8 +87,7 @@ public class LexicalAnalyzer {
 
     private boolean checkForWord(String word) throws ParseException{
         for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (c != curChar) {
+            if (word.charAt(i) != curChar) {
                 if (isLetter(curChar) || i > 1) {
                     throw new ParseException("Illegal characters" + (char) curChar, curPos);
                 }
@@ -99,5 +104,9 @@ public class LexicalAnalyzer {
 
     public int curPos() {
         return curPos();
+    }
+
+    public char getLastOperandChar() {
+        return lastOperandChar;
     }
 }
