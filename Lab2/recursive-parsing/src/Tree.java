@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Tree implements DSTreeNode {
     public static final String EPSILON = "epsilon";
-    public static final String BOOLEXP = "BOOLEAXNP";
+    public static final String BOOLEXP = "BOOLEXP";
     public static final String BOOLEXP_PRIME = "BOOLEXP'";
     public static final String TERM = "TERM";
     public static final String TERM_PRIME = "TERM'";
@@ -21,7 +21,6 @@ public class Tree implements DSTreeNode {
     public static final String OR = "or";
     public static final String AND = "and";
     public static final String NOT = "not";
-
 
     private String nodeName;
     private List<Tree> children;

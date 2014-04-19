@@ -1,0 +1,1 @@
+not not (a and b or not c) and not a xor a or b and ((a)) xor not not (a)

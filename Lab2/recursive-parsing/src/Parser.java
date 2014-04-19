@@ -17,7 +17,7 @@ public class Parser {
     }
 
     private Tree boolExpr() throws ParseException {
-        switch (lex.curToken()) {
+        switch (lex.getCurToken()) {
             case LPAREN:
                 return parseBoolExpr(false);
             case CHAR:
@@ -25,7 +25,7 @@ public class Parser {
             case NOT:
                 return parseBoolExpr(false);
             default:
-                throw new AssertionError();
+                throw new ParseException("BoolExpression can't start with token " + lex.getCurToken(), lex.getCurPos());
         }
     }
 
@@ -40,7 +40,7 @@ public class Parser {
     }
 
     private Tree boolExprPrime() throws ParseException {
-        switch (lex.curToken()) {
+        switch (lex.getCurToken()) {
             case XOR:
                 lex.nextToken();
                 return parseBoolExpr(true, new Tree(Tree.XOR));
@@ -57,7 +57,7 @@ public class Parser {
     }
 
     private Tree term() throws ParseException {
-        switch (lex.curToken()) {
+        switch (lex.getCurToken()) {
             case LPAREN:
                 return parseTerm(false);
             case CHAR:
@@ -65,7 +65,7 @@ public class Parser {
             case NOT:
                 return parseTerm(false);
             default:
-                throw new AssertionError();
+                throw new ParseException("Term can't start with token " + lex.getCurToken(), lex.getCurPos());
         }
     }
 
@@ -78,7 +78,7 @@ public class Parser {
     }
 
     private Tree termPrime() throws ParseException {
-        switch (lex.curToken()) {
+        switch (lex.getCurToken()) {
             case AND:
                 lex.nextToken();
                 return parseTerm(true, new Tree(Tree.AND));
@@ -92,12 +92,12 @@ public class Parser {
                 return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON));
 
             default:
-                throw new AssertionError();
+                throw new ParseException("Token " + lex.getCurToken() + " not expected at TERM", lex.getCurPos());
         }
     }
 
     private Tree factor() throws ParseException {
-        switch (lex.curToken()) {
+        switch (lex.getCurToken()) {
             case CHAR:
                 lex.nextToken();
                 return new Tree(Tree.FACTOR, new Tree("" + lex.getLastOperandChar()));
@@ -107,14 +107,14 @@ public class Parser {
             case LPAREN:
                 lex.nextToken();
                 Tree expr = boolExpr();
-                if (lex.curToken() != Token.RPAREN) {
-                    throw new ParseException(") expected at position", lex.curPos());
+                if (lex.getCurToken() != Token.RPAREN) {
+                    throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
                 lex.nextToken();
 
                 return new Tree(Tree.FACTOR, new Tree("("), expr, new Tree(")"));
             default:
-                throw new AssertionError();
+                throw new ParseException("Factor can't start with token " + lex.getCurToken(), lex.getCurPos());
         }
     }
 

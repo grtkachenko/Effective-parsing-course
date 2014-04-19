@@ -53,27 +53,30 @@ public class LexicalAnalyzer {
                 break;
             default:
                 if (!isLetter(curChar)) {
-                    throw new ParseException("Illegal character" + (char) curChar, curPos);
+                    throw new ParseException("Illegal character : \"" + (char) curChar + "\"", curPos);
                 }
                 char prevLastOperandChar = lastOperandChar;
                 lastOperandChar = (char) curChar;
                 switch (curChar) {
                     case 'a':
-                        curToken = checkForWord("and") ? Token.AND : Token.CHAR;
+                        curToken = checkForWord(Tree.AND) ? Token.AND : Token.CHAR;
                         break;
                     case 'x':
-                        curToken = checkForWord("xor") ? Token.XOR : Token.CHAR;
+                        curToken = checkForWord(Tree.XOR) ? Token.XOR : Token.CHAR;
                         break;
                     case 'o':
-                        curToken = checkForWord("or") ? Token.OR : Token.CHAR;
+                        curToken = checkForWord(Tree.OR) ? Token.OR : Token.CHAR;
                         break;
                     case 'n':
-                        curToken = checkForWord("not") ? Token.NOT : Token.CHAR;
+                        curToken = checkForWord(Tree.NOT) ? Token.NOT : Token.CHAR;
                         break;
                     default:
                         nextChar();
                         curToken = Token.CHAR;
 
+                }
+                if (isLetter(curChar)) {
+                    throw new ParseException("Illegal character : \"" + (char) curChar + "\"; expected non-letter character after " + curToken + " token; position = " + curPos, curPos);
                 }
                 if (curToken != Token.CHAR) {
                     lastOperandChar = prevLastOperandChar;
@@ -89,7 +92,7 @@ public class LexicalAnalyzer {
         for (int i = 0; i < word.length(); i++) {
             if (word.charAt(i) != curChar) {
                 if (isLetter(curChar) || i > 1) {
-                    throw new ParseException("Illegal characters" + (char) curChar, curPos);
+                    throw new ParseException(String.format("Illegal character at position %d; expected : \"%s\", actual : \"%s\"", curPos, word.charAt(i), (char) curChar), curPos);
                 }
                 return false;
             }
@@ -98,12 +101,12 @@ public class LexicalAnalyzer {
         return true;
     }
 
-    public Token curToken() {
+    public Token getCurToken() {
         return curToken;
     }
 
-    public int curPos() {
-        return curPos();
+    public int getCurPos() {
+        return curPos;
     }
 
     public char getLastOperandChar() {

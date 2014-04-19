@@ -1,0 +1,1 @@
+o xor (b xor not (c or d))
