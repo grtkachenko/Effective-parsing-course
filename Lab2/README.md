@@ -5,15 +5,11 @@ Lab #2 (variant №5)
 
 Прим. "and", "or", "xor" и "not" рассматриваются как один терминал.
 
-BOOLEXP -> BOOLEXP (or | xor) TERM        
-        | TERM
+BOOLEXP -> BOOLEXP (or | xor) TERM | TERM
 
-TERM   -> TERM and FACTOR    
-        | FACTOR
+TERM   -> TERM and FACTOR | FACTOR
 
-FACTOR -> not FACTOR         
-        | '(' BOOLEXP ')' 
-        | OPERAND
+FACTOR -> not FACTOR | '(' BOOLEXP ')' | OPERAND
 
 OPERAND -> 'a'|'b'|...|'z'
 
@@ -25,8 +21,6 @@ OPERAND -> 'a'|'b'|...|'z'
 * **OPERAND** - возможные операнды в логической формуле
 
 ###Устранение левой рекурсии 
-
-Устраним левую рекурсию:
 
 BOOLEXP -> TERM BOOLEXP'        
 
@@ -52,8 +46,8 @@ OPERAND -> 'a'|'b'|...|'z'
 | OPERAND     |   c        |               |
 
 e - epsilon    
-c - a..z           
-n - not
-a - and
-x - xor
-o - or 
+c - a..z    
+n - not    
+a - and    
+x - xor    
+o - or    
