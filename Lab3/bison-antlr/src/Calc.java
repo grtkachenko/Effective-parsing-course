@@ -18,7 +18,7 @@ public class Calc {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ArithmeticExpressionsParser parser = new ArithmeticExpressionsParser(tokens);
         ParseTree tree = parser.prog();
-        EvalVisitor eval = new EvalVisitor();
+        CalcVisitor eval = new CalcVisitor();
         eval.visit(tree);
     }
 }
