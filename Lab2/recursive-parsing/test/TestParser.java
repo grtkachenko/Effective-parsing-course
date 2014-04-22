@@ -1,5 +1,4 @@
 import junit.framework.Assert;
-import org.StructureGraphic.v1.DSutils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,7 +15,6 @@ import java.util.TreeMap;
 public class TestParser {
     private static final String ROOT_TESTS = "test/test-suit/";
     private static Map<Integer, String> verdict;
-    private Tree lastTree;
 
     @BeforeClass
     public static void prepare() {
@@ -122,11 +120,11 @@ public class TestParser {
 
     private boolean checkTest(int fileNumber) {
         try {
-            lastTree = new Parser().parse(new FileInputStream(ROOT_TESTS + fileNumber + ".in"));
+            new Parser().parse(new FileInputStream(ROOT_TESTS + fileNumber + ".in"));
             verdict.put(fileNumber, String.format("Test # %3d correctly evaluated", fileNumber));
             return true;
         } catch (ParseException e) {
-            verdict.put(fileNumber, String.format("Test # %3d failed with parse error : " + e, fileNumber));
+            verdict.put(fileNumber, String.format("Test # %3d failed with error : " + e, fileNumber));
             return false;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

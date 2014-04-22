@@ -16,7 +16,7 @@ public class Tree implements DSTreeNode {
     public static final String BOOLEXP_PRIME = "BOOLEXP'";
     public static final String TERM = "TERM";
     public static final String TERM_PRIME = "TERM'";
-    public static final String FACTOR = "FACTOR'";
+    public static final String FACTOR = "FACTOR";
     public static final String XOR = "xor";
     public static final String OR = "or";
     public static final String AND = "and";

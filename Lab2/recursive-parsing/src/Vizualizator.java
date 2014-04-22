@@ -10,6 +10,9 @@ public class Vizualizator {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Utils.showTestTree(scanner.nextInt());
+        int fileNumber;
+        if (!Utils.showTestTree(fileNumber = scanner.nextInt())) {
+            System.out.println("Incorrect input in \"" + fileNumber + ".in\"");
+        }
     }
 }
