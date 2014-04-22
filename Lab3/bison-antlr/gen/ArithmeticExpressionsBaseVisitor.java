@@ -17,14 +17,6 @@ public class ArithmeticExpressionsBaseVisitor<T> extends AbstractParseTreeVisito
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -34,14 +26,6 @@ public class ArithmeticExpressionsBaseVisitor<T> extends AbstractParseTreeVisito
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -65,14 +49,6 @@ public class ArithmeticExpressionsBaseVisitor<T> extends AbstractParseTreeVisito
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -82,22 +58,6 @@ public class ArithmeticExpressionsBaseVisitor<T> extends AbstractParseTreeVisito
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}

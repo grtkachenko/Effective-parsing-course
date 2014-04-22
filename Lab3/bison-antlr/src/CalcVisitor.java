@@ -23,7 +23,7 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
      */
     @Override
     public Integer visitInt(ArithmeticExpressionsParser.IntContext ctx) {
-        return Integer.valueOf(ctx.INT().getText()) * (ctx.SUB() != null ? -1 : 1);
+        return Integer.valueOf(ctx.INT().getText());
     }
 
     /**
@@ -50,8 +50,8 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
      */
     @Override
     public Integer visitAddSub(ArithmeticExpressionsParser.AddSubContext ctx) {
-        int left = visit(ctx.expr());
-        int right = visit(ctx.right_expr());
+        int left = visit(ctx.expr(0));
+        int right = visit(ctx.expr(1));
         return ctx.op.getType() == ArithmeticExpressionsParser.ADD ? left + right : left - right;
     }
 
@@ -63,49 +63,5 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
         return visit(ctx.expr()) * (ctx.SUB() != null ? -1 : 1);
     }
 
-    /**
-     * RIGHT_VAR
-     */
-    @Override
-    public Integer visitRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx) {
-        String var = ctx.VAR().getText();
-        return memory.containsKey(var) ? memory.get(var) : 0;
-    }
-
-    /**
-     * RIGHT_INT
-     */
-    @Override
-    public Integer visitRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx) {
-        return Integer.valueOf(ctx.INT().getText());
-    }
-
-    /**
-     * right_expr op=('*'|'/') right_expr
-     */
-    @Override
-    public Integer visitRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx) {
-        int left = visit(ctx.expr());
-        int right = visit(ctx.right_expr());
-        return ctx.op.getType() == ArithmeticExpressionsParser.MUL ? left * right : left / right;
-    }
-
-    /**
-     * '(' expr ')'
-     */
-    @Override
-    public Integer visitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx) {
-        return visit(ctx.expr());
-    }
-
-    /**
-     * right_expr op=('+'|'-') right_expr
-     */
-    @Override
-    public Integer visitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx) {
-        int left = visit(ctx.right_expr(0));
-        int right = visit(ctx.right_expr(1));
-        return ctx.op.getType() == ArithmeticExpressionsParser.ADD ? left + right : left - right;
-    }
 
 }

@@ -11,13 +11,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#RightParens}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -30,13 +23,6 @@ public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#RightVar}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
@@ -53,13 +39,6 @@ public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	T visitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#RightInt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -72,20 +51,6 @@ public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#RightAddSub}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#RightMulDiv}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#MulDiv}.

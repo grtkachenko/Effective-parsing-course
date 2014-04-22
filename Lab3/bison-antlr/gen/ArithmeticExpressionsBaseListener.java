@@ -16,19 +16,6 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -49,19 +36,6 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -94,19 +68,6 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -127,32 +88,6 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
