@@ -68,6 +68,19 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -88,6 +101,19 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

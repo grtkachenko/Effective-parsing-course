@@ -39,6 +39,13 @@ public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	T visitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#AddSubTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -51,6 +58,13 @@ public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#MulDiv}.

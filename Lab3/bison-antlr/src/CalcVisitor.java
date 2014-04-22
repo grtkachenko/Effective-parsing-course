@@ -36,22 +36,22 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
     }
 
     /**
-     * expr op=('*') right_expr
+     * term op=('*'|'/') factor
      */
     @Override
     public Integer visitMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
+        int left = visit(ctx.term());
+        int right = visit(ctx.factor());
         return ctx.op.getType() == ArithmeticExpressionsParser.MUL ? left * right : left / right;
     }
 
     /**
-     * expr op=('+'|'-') right_expr
+     * expr op=('+'|'-') term
      */
     @Override
     public Integer visitAddSub(ArithmeticExpressionsParser.AddSubContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
+        int left = visit(ctx.expr());
+        int right = visit(ctx.term());
         return ctx.op.getType() == ArithmeticExpressionsParser.ADD ? left + right : left - right;
     }
 
@@ -63,5 +63,19 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
         return visit(ctx.expr()) * (ctx.SUB() != null ? -1 : 1);
     }
 
+    /**
+     * term
+     */
+    @Override
+    public Integer visitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx) {
+        return visit(ctx.term());
+    }
 
+    /**
+     * factor
+     */
+    @Override
+    public Integer visitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx) {
+        return visit(ctx.factor());
+    }
 }

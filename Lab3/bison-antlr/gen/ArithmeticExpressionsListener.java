@@ -52,6 +52,17 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	void exitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#AddSubTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#AddSubTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
 	 * @param ctx the parse tree
 	 */
@@ -72,6 +83,17 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.
+	 * @param ctx the parse tree
+	 */
+	void enterMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.
+	 * @param ctx the parse tree
+	 */
+	void exitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#MulDiv}.

@@ -4,11 +4,16 @@ prog: stat+ ;
 stat: VAR '=' expr ';' NEWLINE # Assign;
 
 
-expr:  expr op=(MUL|DIV) expr # MulDiv
-    | expr op=(ADD|SUB) expr # AddSub
-    | INT # Int
+expr:  expr op=(ADD|SUB) term # AddSub
+    | term # AddSubTerm;
+
+term:  term op=(MUL|DIV) factor # MulDiv
+    | factor # MulDivFactor;
+
+factor:  INT # Int
     | (SUB|)VAR # Var
     | (SUB|)'(' expr ')' # Parens;
+
 
 VAR : [a-zA-Z]+ ;
 INT : [-]?[0-9]+ ;
