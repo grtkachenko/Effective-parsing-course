@@ -8,6 +8,17 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightParens}.
+	 * @param ctx the parse tree
+	 */
+	void enterRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#RightParens}.
+	 * @param ctx the parse tree
+	 */
+	void exitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
 	 * @param ctx the parse tree
 	 */
@@ -19,15 +30,15 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	void exitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
+	void enterProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
+	void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightVar}.
@@ -41,6 +52,17 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	void exitRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#AddSub}.
 	 * @param ctx the parse tree
 	 */
@@ -50,17 +72,6 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#SVar}.
-	 * @param ctx the parse tree
-	 */
-	void enterSVar(@NotNull ArithmeticExpressionsParser.SVarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#SVar}.
-	 * @param ctx the parse tree
-	 */
-	void exitSVar(@NotNull ArithmeticExpressionsParser.SVarContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightInt}.
@@ -74,26 +85,37 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	void exitRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#SInt}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
 	 * @param ctx the parse tree
 	 */
-	void enterSInt(@NotNull ArithmeticExpressionsParser.SIntContext ctx);
+	void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#SInt}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
 	 * @param ctx the parse tree
 	 */
-	void exitSInt(@NotNull ArithmeticExpressionsParser.SIntContext ctx);
+	void exitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#SignParens}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
 	 * @param ctx the parse tree
 	 */
-	void enterSignParens(@NotNull ArithmeticExpressionsParser.SignParensContext ctx);
+	void enterVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#SignParens}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
 	 * @param ctx the parse tree
 	 */
-	void exitSignParens(@NotNull ArithmeticExpressionsParser.SignParensContext ctx);
+	void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightAddSub}.
+	 * @param ctx the parse tree
+	 */
+	void enterRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#RightAddSub}.
+	 * @param ctx the parse tree
+	 */
+	void exitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightMulDiv}.
@@ -116,59 +138,4 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightParens}.
-	 * @param ctx the parse tree
-	 */
-	void enterRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#RightParens}.
-	 * @param ctx the parse tree
-	 */
-	void exitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void enterProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
-	 * @param ctx the parse tree
-	 */
-	void enterVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
-	 * @param ctx the parse tree
-	 */
-	void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
-	 * @param ctx the parse tree
-	 */
-	void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
-	 * @param ctx the parse tree
-	 */
-	void exitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#RightAddSub}.
-	 * @param ctx the parse tree
-	 */
-	void enterRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#RightAddSub}.
-	 * @param ctx the parse tree
-	 */
-	void exitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx);
 }

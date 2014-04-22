@@ -6,12 +6,9 @@ stat: VAR '=' expr ';' NEWLINE # Assign;
 
 expr:  expr op=(MUL|DIV) expr # MulDiv
     | expr op=(ADD|SUB) right_expr # AddSub
-    | INT # Int
-    | VAR # Var
-    | '-'INT # SInt
-    | '-'VAR # SVar
-    | '(' expr ')' # Parens
-    | '-(' expr ')' # SignParens;
+    | (SUB|)INT # Int
+    | (SUB|)VAR # Var
+    | (SUB|)'(' expr ')' # Parens;
 
 right_expr:  right_expr op=(MUL|DIV) expr # RightMulDiv
     | right_expr op=(ADD|SUB) right_expr # RightAddSub

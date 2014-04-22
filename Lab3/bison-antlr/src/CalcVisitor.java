@@ -23,7 +23,7 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
      */
     @Override
     public Integer visitInt(ArithmeticExpressionsParser.IntContext ctx) {
-        return Integer.valueOf(ctx.INT().getText());
+        return Integer.valueOf(ctx.INT().getText()) * (ctx.SUB() != null ? -1 : 1);
     }
 
     /**
@@ -32,24 +32,7 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
     @Override
     public Integer visitVar(ArithmeticExpressionsParser.VarContext ctx) {
         String var = ctx.VAR().getText();
-        return memory.containsKey(var) ? memory.get(var) : 0;
-    }
-
-    /**
-     * -VAR
-     */
-    @Override
-    public Integer visitSVar(@NotNull ArithmeticExpressionsParser.SVarContext ctx) {
-        String var = ctx.VAR().getText();
-        return memory.containsKey(var) ? -memory.get(var) : 0;
-    }
-
-    /**
-     * -INT
-     */
-    @Override
-    public Integer visitSInt(@NotNull ArithmeticExpressionsParser.SIntContext ctx) {
-        return -Integer.valueOf(ctx.INT().getText());
+        return (memory.containsKey(var) ? memory.get(var) : 0) * (ctx.SUB() != null ? -1 : 1);
     }
 
     /**
@@ -77,7 +60,7 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
      */
     @Override
     public Integer visitParens(ArithmeticExpressionsParser.ParensContext ctx) {
-        return visit(ctx.expr());
+        return visit(ctx.expr()) * (ctx.SUB() != null ? -1 : 1);
     }
 
     /**
@@ -125,11 +108,4 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
         return ctx.op.getType() == ArithmeticExpressionsParser.ADD ? left + right : left - right;
     }
 
-    /**
-     * '-(' expr ')'
-     */
-    @Override
-    public Integer visitSignParens(@NotNull ArithmeticExpressionsParser.SignParensContext ctx) {
-        return -visit(ctx.expr());
-    }
 }
