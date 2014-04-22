@@ -11,8 +11,10 @@ import java.io.*;
  * Time: 1:24
  */
 public class Calc {
+    private static final String DEFAULT_TEST_NAME = "input";
+
     public static void main(String[] args) throws IOException {
-        InputStream is = new FileInputStream(new File("input.txt"));;
+        InputStream is = new FileInputStream(new File(DEFAULT_TEST_NAME));;
         ANTLRInputStream input = new ANTLRInputStream(is);
         ArithmeticExpressionsLexer lexer = new ArithmeticExpressionsLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

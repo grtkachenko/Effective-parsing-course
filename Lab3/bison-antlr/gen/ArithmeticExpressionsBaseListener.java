@@ -16,13 +16,13 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMul(@NotNull ArithmeticExpressionsParser.MulContext ctx) { }
+	@Override public void enterParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMul(@NotNull ArithmeticExpressionsParser.MulContext ctx) { }
+	@Override public void exitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -42,39 +42,13 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
+	@Override public void enterRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+	@Override public void exitRightVar(@NotNull ArithmeticExpressionsParser.RightVarContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -94,13 +68,143 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
+	@Override public void enterSVar(@NotNull ArithmeticExpressionsParser.SVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
+	@Override public void exitSVar(@NotNull ArithmeticExpressionsParser.SVarContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRightInt(@NotNull ArithmeticExpressionsParser.RightIntContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSInt(@NotNull ArithmeticExpressionsParser.SIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSInt(@NotNull ArithmeticExpressionsParser.SIntContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSignParens(@NotNull ArithmeticExpressionsParser.SignParensContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSignParens(@NotNull ArithmeticExpressionsParser.SignParensContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRightMulDiv(@NotNull ArithmeticExpressionsParser.RightMulDivContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRightParens(@NotNull ArithmeticExpressionsParser.RightParensContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRightAddSub(@NotNull ArithmeticExpressionsParser.RightAddSubContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
