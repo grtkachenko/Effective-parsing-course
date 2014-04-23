@@ -1,21 +1,26 @@
 grammar ArithmeticExpressions;
-boolexp: term boolexp_prime;
+prog: stat+ ;
 
-boolexp_prime : (OR|XOR) term boolexp_prime ||NEWLINE;
+stat: VAR '=' expr ';' NEWLINE # Assign;
 
-term : factor term_prime;
 
-term_prime:  AND factor term_prime ||NEWLINE;
+expr:  expr op=(ADD|SUB) term # AddSub
+    | term # AddSubTerm;
 
-factor:  VAR
-    | NOT factor
-    | '(' boolexp ')';
+term:  term op=(MUL|DIV) factor # MulDiv
+    | factor # MulDivFactor;
 
-VAR : [a-z] ;
+factor:  INT # Int
+    | (SUB|)VAR # Var
+    | (SUB|)'(' expr ')' # Parens;
+
+
+VAR : [a-zA-Z]+ ;
+INT : [-]?[0-9]+ ;
 
 NEWLINE:'\r'? '\n' ;
 WS : [ \t]+ -> skip ;
-AND : 'and' ;
-OR : 'or' ;
-XOR : 'xor' ;
-NOT : 'not' ;
+MUL : '*' ;
+DIV : '/' ;
+ADD : '+' ;
+SUB : '-' ;

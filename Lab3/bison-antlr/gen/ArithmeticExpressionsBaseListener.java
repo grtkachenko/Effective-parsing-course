@@ -16,65 +16,117 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTerm_prime(@NotNull ArithmeticExpressionsParser.Term_primeContext ctx) { }
+	@Override public void enterParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTerm_prime(@NotNull ArithmeticExpressionsParser.Term_primeContext ctx) { }
+	@Override public void exitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTerm(@NotNull ArithmeticExpressionsParser.TermContext ctx) { }
+	@Override public void enterProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTerm(@NotNull ArithmeticExpressionsParser.TermContext ctx) { }
+	@Override public void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolexp(@NotNull ArithmeticExpressionsParser.BoolexpContext ctx) { }
+	@Override public void enterAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolexp(@NotNull ArithmeticExpressionsParser.BoolexpContext ctx) { }
+	@Override public void exitAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactor(@NotNull ArithmeticExpressionsParser.FactorContext ctx) { }
+	@Override public void enterAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFactor(@NotNull ArithmeticExpressionsParser.FactorContext ctx) { }
+	@Override public void exitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolexp_prime(@NotNull ArithmeticExpressionsParser.Boolexp_primeContext ctx) { }
+	@Override public void enterAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolexp_prime(@NotNull ArithmeticExpressionsParser.Boolexp_primeContext ctx) { }
+	@Override public void exitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

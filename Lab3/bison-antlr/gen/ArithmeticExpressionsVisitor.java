@@ -11,37 +11,65 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#term_prime}.
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTerm_prime(@NotNull ArithmeticExpressionsParser.Term_primeContext ctx);
+	T visitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#term}.
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTerm(@NotNull ArithmeticExpressionsParser.TermContext ctx);
+	T visitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#boolexp}.
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBoolexp(@NotNull ArithmeticExpressionsParser.BoolexpContext ctx);
+	T visitAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#factor}.
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#AddSub}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFactor(@NotNull ArithmeticExpressionsParser.FactorContext ctx);
+	T visitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#boolexp_prime}.
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#AddSubTerm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBoolexp_prime(@NotNull ArithmeticExpressionsParser.Boolexp_primeContext ctx);
+	T visitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#MulDiv}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx);
 }
