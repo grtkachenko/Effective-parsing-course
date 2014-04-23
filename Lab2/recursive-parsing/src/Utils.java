@@ -21,9 +21,9 @@ public class Utils {
         return false;
     }
 
-    private static Tree getTree(int fileNumber) {
+    public static Tree getTree(int fileNumber) {
         try {
-            return new Parser().parse(new FileInputStream(ROOT_TESTS + fileNumber + ".in"));
+            return new BoolParser().parse(new FileInputStream(ROOT_TESTS + fileNumber + ".in"));
         } catch (ParseException e) {
             return null;
         } catch (FileNotFoundException e) {

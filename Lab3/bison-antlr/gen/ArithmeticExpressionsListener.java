@@ -8,101 +8,57 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#term_prime}.
 	 * @param ctx the parse tree
 	 */
-	void enterParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx);
+	void enterTerm_prime(@NotNull ArithmeticExpressionsParser.Term_primeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#term_prime}.
 	 * @param ctx the parse tree
 	 */
-	void exitParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx);
+	void exitTerm_prime(@NotNull ArithmeticExpressionsParser.Term_primeContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#term}.
 	 * @param ctx the parse tree
 	 */
-	void enterProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
+	void enterTerm(@NotNull ArithmeticExpressionsParser.TermContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#prog}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#term}.
 	 * @param ctx the parse tree
 	 */
-	void exitProg(@NotNull ArithmeticExpressionsParser.ProgContext ctx);
+	void exitTerm(@NotNull ArithmeticExpressionsParser.TermContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#boolexp}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
+	void enterBoolexp(@NotNull ArithmeticExpressionsParser.BoolexpContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Assign}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#boolexp}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
+	void exitBoolexp(@NotNull ArithmeticExpressionsParser.BoolexpContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#AddSub}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void enterAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
+	void enterFactor(@NotNull ArithmeticExpressionsParser.FactorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#AddSub}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void exitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx);
+	void exitFactor(@NotNull ArithmeticExpressionsParser.FactorContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#AddSubTerm}.
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#boolexp_prime}.
 	 * @param ctx the parse tree
 	 */
-	void enterAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx);
+	void enterBoolexp_prime(@NotNull ArithmeticExpressionsParser.Boolexp_primeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#AddSubTerm}.
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#boolexp_prime}.
 	 * @param ctx the parse tree
 	 */
-	void exitAddSubTerm(@NotNull ArithmeticExpressionsParser.AddSubTermContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
-	 * @param ctx the parse tree
-	 */
-	void enterInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Int}.
-	 * @param ctx the parse tree
-	 */
-	void exitInt(@NotNull ArithmeticExpressionsParser.IntContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
-	 * @param ctx the parse tree
-	 */
-	void enterVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#Var}.
-	 * @param ctx the parse tree
-	 */
-	void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.
-	 * @param ctx the parse tree
-	 */
-	void enterMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.
-	 * @param ctx the parse tree
-	 */
-	void exitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#MulDiv}.
-	 * @param ctx the parse tree
-	 */
-	void enterMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#MulDiv}.
-	 * @param ctx the parse tree
-	 */
-	void exitMulDiv(@NotNull ArithmeticExpressionsParser.MulDivContext ctx);
+	void exitBoolexp_prime(@NotNull ArithmeticExpressionsParser.Boolexp_primeContext ctx);
 }

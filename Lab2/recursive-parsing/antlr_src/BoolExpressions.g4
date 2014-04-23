@@ -1,11 +1,13 @@
-grammar ArithmeticExpressions;
+grammar BoolExpressions;
+prog : boolexp NEWLINE;
+
 boolexp: term boolexp_prime;
 
-boolexp_prime : (OR|XOR) term boolexp_prime ||NEWLINE;
+boolexp_prime : (OR|XOR) term boolexp_prime |;
 
 term : factor term_prime;
 
-term_prime:  AND factor term_prime ||NEWLINE;
+term_prime:  AND factor term_prime |;
 
 factor:  VAR
     | NOT factor

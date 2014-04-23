@@ -19,8 +19,8 @@ public class Calc {
         ArithmeticExpressionsLexer lexer = new ArithmeticExpressionsLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ArithmeticExpressionsParser parser = new ArithmeticExpressionsParser(tokens);
-        ParseTree tree = parser.prog();
-        CalcVisitor eval = new CalcVisitor();
-        eval.visit(tree);
+        ParseTree tree = parser.boolexp();
+        System.out.println(tree.toStringTree(parser));
+
     }
 }

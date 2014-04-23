@@ -7,7 +7,7 @@ import java.text.ParseException;
  * Date: 19.04.14
  * Time: 17:38
  */
-public class Parser {
+public class BoolParser {
     private LexicalAnalyzer lex;
 
     public Tree parse(InputStream is) throws ParseException {
@@ -48,9 +48,9 @@ public class Parser {
                 lex.nextToken();
                 return parseBoolExpr(true, new Tree(Tree.OR));
             case END:
-                return new Tree(Tree.BOOLEXP_PRIME, new Tree(Tree.EPSILON));
+                return new Tree(Tree.BOOLEXP_PRIME, new Tree(Tree.EPSILON, true));
             case RPAREN:
-                return new Tree(Tree.BOOLEXP_PRIME, new Tree(Tree.EPSILON));
+                return new Tree(Tree.BOOLEXP_PRIME, new Tree(Tree.EPSILON, true));
             default:
                 throw new AssertionError();
         }
@@ -83,13 +83,13 @@ public class Parser {
                 lex.nextToken();
                 return parseTerm(true, new Tree(Tree.AND));
             case END:
-                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON));
+                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON, true));
             case RPAREN:
-                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON));
+                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON, true));
             case XOR:
-                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON));
+                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON, true));
             case OR:
-                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON));
+                return new Tree(Tree.TERM_PRIME, new Tree(Tree.EPSILON, true));
 
             default:
                 throw new ParseException("Token " + lex.getCurToken() + " not expected at TERM", lex.getCurPos());

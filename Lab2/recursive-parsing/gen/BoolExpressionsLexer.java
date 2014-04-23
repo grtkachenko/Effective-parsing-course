@@ -1,4 +1,4 @@
-// Generated from /Users/gtkachenko/Dropbox/Programming/Effective_parsing/Lab3/bison-antlr/antlr_src/ArithmeticExpressions.g4 by ANTLR 4.x
+// Generated from /Users/gtkachenko/Dropbox/Programming/Effective_parsing/Lab2/recursive-parsing/antlr_src/BoolExpressions.g4 by ANTLR 4.x
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class ArithmeticExpressionsLexer extends Lexer {
+public class BoolExpressionsLexer extends Lexer {
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
@@ -28,13 +28,13 @@ public class ArithmeticExpressionsLexer extends Lexer {
 	};
 
 
-	public ArithmeticExpressionsLexer(CharStream input) {
+	public BoolExpressionsLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "ArithmeticExpressions.g4"; }
+	public String getGrammarFileName() { return "BoolExpressions.g4"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }

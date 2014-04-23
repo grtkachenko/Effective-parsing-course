@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class Tree implements DSTreeNode {
     public static final String EPSILON = "epsilon";
-    public static final String BOOLEXP = "BOOLEXP";
-    public static final String BOOLEXP_PRIME = "BOOLEXP'";
-    public static final String TERM = "TERM";
-    public static final String TERM_PRIME = "TERM'";
-    public static final String FACTOR = "FACTOR";
+    public static final String BOOLEXP = "boolexp";
+    public static final String BOOLEXP_PRIME = "boolexp_prime";
+    public static final String TERM = "term";
+    public static final String TERM_PRIME = "term_prime";
+    public static final String FACTOR = "factor";
     public static final String XOR = "xor";
     public static final String OR = "or";
     public static final String AND = "and";
@@ -24,10 +24,16 @@ public class Tree implements DSTreeNode {
 
     private String nodeName;
     private List<Tree> children;
+    private boolean isEpsilon = false;
 
     public Tree(String nodeName, Tree... children) {
+        this(nodeName, false, children);
+    }
+
+    public Tree(String nodeName, boolean isEpsilon, Tree... children) {
         this.nodeName = nodeName;
         this.children = Arrays.asList(children);
+        this.isEpsilon = isEpsilon;
     }
 
     public Tree(String nodeName) {
@@ -36,18 +42,17 @@ public class Tree implements DSTreeNode {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Node : " + nodeName + "; Children :");
-        if (children != null) {
-            for (Tree child : children) {
-                builder.append(child.nodeName + ", ");
-            }
-
-            for (Tree child : children) {
-                builder.append("\n" + child);
-            }
-
+        if (children == null || (children.size() == 1 && children.get(0).isEpsilon)) {
+            return nodeName;
         }
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("(" + nodeName);
+
+        for (Tree child : children) {
+            builder.append(" " + child);
+        }
+        builder.append(")");
         return builder.toString();
     }
 
