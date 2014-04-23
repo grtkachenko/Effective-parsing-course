@@ -16,6 +16,19 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExprOnly(@NotNull ArithmeticExpressionsParser.ExprOnlyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExprOnly(@NotNull ArithmeticExpressionsParser.ExprOnlyContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterParens(@NotNull ArithmeticExpressionsParser.ParensContext ctx) { }
 	/**
 	 * {@inheritDoc}

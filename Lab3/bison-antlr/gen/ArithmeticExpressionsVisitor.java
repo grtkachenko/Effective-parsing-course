@@ -11,6 +11,13 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface ArithmeticExpressionsVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#ExprOnly}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprOnly(@NotNull ArithmeticExpressionsParser.ExprOnlyContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

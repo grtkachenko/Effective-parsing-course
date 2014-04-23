@@ -8,6 +8,17 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#ExprOnly}.
+	 * @param ctx the parse tree
+	 */
+	void enterExprOnly(@NotNull ArithmeticExpressionsParser.ExprOnlyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#ExprOnly}.
+	 * @param ctx the parse tree
+	 */
+	void exitExprOnly(@NotNull ArithmeticExpressionsParser.ExprOnlyContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#Parens}.
 	 * @param ctx the parse tree
 	 */

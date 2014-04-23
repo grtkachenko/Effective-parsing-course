@@ -1,7 +1,8 @@
 grammar ArithmeticExpressions;
 prog: stat+ ;
 
-stat: VAR '=' expr ';' NEWLINE # Assign;
+stat: VAR '=' expr ';' NEWLINE # Assign
+    | expr ';' NEWLINE # ExprOnly;
 
 expr:  expr op=(ADD|SUB) term # AddSub
     | term # AddSubTerm;

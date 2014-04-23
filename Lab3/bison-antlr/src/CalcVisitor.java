@@ -78,4 +78,14 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
     public Integer visitMulDivFactor(@NotNull ArithmeticExpressionsParser.MulDivFactorContext ctx) {
         return visit(ctx.factor());
     }
+
+    /**
+     * expr
+     */
+    @Override
+    public Integer visitExprOnly(@NotNull ArithmeticExpressionsParser.ExprOnlyContext ctx) {
+        int result = visit(ctx.expr());
+        System.out.println(result);
+        return result;
+    }
 }
