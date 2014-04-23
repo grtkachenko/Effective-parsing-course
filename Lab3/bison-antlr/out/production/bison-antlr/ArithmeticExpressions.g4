@@ -3,7 +3,6 @@ prog: stat+ ;
 
 stat: VAR '=' expr ';' NEWLINE # Assign;
 
-
 expr:  expr op=(ADD|SUB) term # AddSub
     | term # AddSubTerm;
 

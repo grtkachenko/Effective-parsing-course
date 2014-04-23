@@ -1,0 +1,15 @@
+XOR=8
+WS=5
+VAR=3
+NOT=9
+NEWLINE=4
+AND=6
+T__1=1
+T__0=2
+OR=7
+'not'=9
+'('=2
+'or'=7
+'and'=6
+')'=1
+'xor'=8
