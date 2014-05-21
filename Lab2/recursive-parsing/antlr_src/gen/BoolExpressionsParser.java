@@ -14,10 +14,10 @@ public class BoolExpressionsParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__1=1, T__0=2, VAR=3, NEWLINE=4, WS=5, AND=6, OR=7, XOR=8, NOT=9;
+		T__1=1, T__0=2, VAR=3, INT=4, NEWLINE=5, WS=6, AND=7, OR=8, XOR=9, NOT=10;
 	public static final String[] tokenNames = {
-		"<INVALID>", "')'", "'('", "VAR", "NEWLINE", "WS", "'and'", "'or'", "'xor'", 
-		"'not'"
+		"<INVALID>", "')'", "'('", "VAR", "INT", "NEWLINE", "WS", "'and'", "'or'", 
+		"'xor'", "'not'"
 	};
 	public static final int
 		RULE_prog = 0, RULE_boolexp = 1, RULE_boolexp_prime = 2, RULE_term = 3, 
@@ -319,6 +319,7 @@ public class BoolExpressionsParser extends Parser {
 	}
 
 	public static class FactorContext extends ParserRuleContext {
+		public TerminalNode INT() { return getToken(BoolExpressionsParser.INT, 0); }
 		public TerminalNode VAR() { return getToken(BoolExpressionsParser.VAR, 0); }
 		public TerminalNode NOT() { return getToken(BoolExpressionsParser.NOT, 0); }
 		public FactorContext factor() {
@@ -350,7 +351,7 @@ public class BoolExpressionsParser extends Parser {
 		FactorContext _localctx = new FactorContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_factor);
 		try {
-			setState(42);
+			setState(43);
 			switch (_input.LA(1)) {
 			case VAR:
 				enterOuterAlt(_localctx, 1);
@@ -358,19 +359,25 @@ public class BoolExpressionsParser extends Parser {
 				setState(35); match(VAR);
 				}
 				break;
-			case NOT:
+			case INT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(36); match(NOT);
-				setState(37); factor();
+				setState(36); match(INT);
+				}
+				break;
+			case NOT:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(37); match(NOT);
+				setState(38); factor();
 				}
 				break;
 			case 2:
-				enterOuterAlt(_localctx, 3);
+				enterOuterAlt(_localctx, 4);
 				{
-				setState(38); match(2);
-				setState(39); boolexp();
-				setState(40); match(1);
+				setState(39); match(2);
+				setState(40); boolexp();
+				setState(41); match(1);
 				}
 				break;
 			default:
@@ -389,18 +396,18 @@ public class BoolExpressionsParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\13/\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\4\3\4\3\4"+
-		"\3\4\3\4\5\4\32\n\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\5\6$\n\6\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\3\7\5\7-\n\7\3\7\2\2\b\2\4\6\b\n\f\2\3\3\2\t\n,\2\16\3"+
-		"\2\2\2\4\21\3\2\2\2\6\31\3\2\2\2\b\33\3\2\2\2\n#\3\2\2\2\f,\3\2\2\2\16"+
-		"\17\5\4\3\2\17\20\7\6\2\2\20\3\3\2\2\2\21\22\5\b\5\2\22\23\5\6\4\2\23"+
-		"\5\3\2\2\2\24\25\t\2\2\2\25\26\5\b\5\2\26\27\5\6\4\2\27\32\3\2\2\2\30"+
-		"\32\3\2\2\2\31\24\3\2\2\2\31\30\3\2\2\2\32\7\3\2\2\2\33\34\5\f\7\2\34"+
-		"\35\5\n\6\2\35\t\3\2\2\2\36\37\7\b\2\2\37 \5\f\7\2 !\5\n\6\2!$\3\2\2\2"+
-		"\"$\3\2\2\2#\36\3\2\2\2#\"\3\2\2\2$\13\3\2\2\2%-\7\5\2\2&\'\7\13\2\2\'"+
-		"-\5\f\7\2()\7\4\2\2)*\5\4\3\2*+\7\3\2\2+-\3\2\2\2,%\3\2\2\2,&\3\2\2\2"+
-		",(\3\2\2\2-\r\3\2\2\2\5\31#,";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\f\60\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\4\3\4\3"+
+		"\4\3\4\3\4\5\4\32\n\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\5\6$\n\6\3\7\3\7"+
+		"\3\7\3\7\3\7\3\7\3\7\3\7\5\7.\n\7\3\7\2\2\b\2\4\6\b\n\f\2\3\3\2\n\13."+
+		"\2\16\3\2\2\2\4\21\3\2\2\2\6\31\3\2\2\2\b\33\3\2\2\2\n#\3\2\2\2\f-\3\2"+
+		"\2\2\16\17\5\4\3\2\17\20\7\7\2\2\20\3\3\2\2\2\21\22\5\b\5\2\22\23\5\6"+
+		"\4\2\23\5\3\2\2\2\24\25\t\2\2\2\25\26\5\b\5\2\26\27\5\6\4\2\27\32\3\2"+
+		"\2\2\30\32\3\2\2\2\31\24\3\2\2\2\31\30\3\2\2\2\32\7\3\2\2\2\33\34\5\f"+
+		"\7\2\34\35\5\n\6\2\35\t\3\2\2\2\36\37\7\t\2\2\37 \5\f\7\2 !\5\n\6\2!$"+
+		"\3\2\2\2\"$\3\2\2\2#\36\3\2\2\2#\"\3\2\2\2$\13\3\2\2\2%.\7\5\2\2&.\7\6"+
+		"\2\2\'(\7\f\2\2(.\5\f\7\2)*\7\4\2\2*+\5\4\3\2+,\7\3\2\2,.\3\2\2\2-%\3"+
+		"\2\2\2-&\3\2\2\2-\'\3\2\2\2-)\3\2\2\2.\r\3\2\2\2\5\31#-";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

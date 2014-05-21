@@ -9,9 +9,11 @@ BOOLEXP -> BOOLEXP (or | xor) TERM | TERM
 
 TERM   -> TERM and FACTOR | FACTOR
 
-FACTOR -> not FACTOR | '(' BOOLEXP ')' | OPERAND
+FACTOR -> not FACTOR | '(' BOOLEXP ')' | OPERAND | INT
 
 OPERAND -> 'a'|'b'|...|'z'
+
+INT -> '0'|'1'
 
 * **BOOLEXP** - логическая формула
 * **TERM** - правый операнд в логической операций or или xor (при этом в этом выражений приоритет следующей 
@@ -19,6 +21,8 @@ OPERAND -> 'a'|'b'|...|'z'
 * **FACTOR** - правый операнд в логической операций and (при этом в этом выражений приоритет следующей 
 выполняемой операций не меньше приоритета операций not или скобок)
 * **OPERAND** - возможные операнды в логической формуле
+* **INT** - возможные константы в логической формуле
+
 
 ###Устранение левой рекурсии 
 
@@ -33,20 +37,25 @@ TERM' ->  eps | and FACTOR TERM'
 FACTOR -> not FACTOR         
         | (BOOLEXP) 
         | OPERAND
+        | INT
 
 OPERAND -> 'a'|'b'|...|'z'
+INT -> '0'|'1'
 
 |             | FIRST      |     FOLLOW    |
 |:------------|:----------:|:-------------:|
-| BOOLEXP     |  nc(       | $)            |
+| BOOLEXP     |  nc(     i | $)            |
 | BOOLEXP'    |     e xo   | $)            |
-| TERM        |  nc(       | $)  xo        |
+| TERM        |  nc(     i | $)  xo        |
 | TERM'       |     ea     | $)  xo        |
-| FACTOR      |  nc(       | $)  xoa       |
-| OPERAND     |   c        | $)  xoa       |
+| FACTOR      |  nc(     i | $)  xoa       |
+| OPERAND     |   c      i | $)  xoa       |
+| INT         |          i | $)  xoa       |
+
 
 e - epsilon    
 c - a..z    
+i - 0,1
 n - not    
 a - and    
 x - xor    

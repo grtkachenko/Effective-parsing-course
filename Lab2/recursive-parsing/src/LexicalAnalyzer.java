@@ -51,6 +51,17 @@ public class LexicalAnalyzer {
             case -1:
                 curToken = Token.END;
                 break;
+            case '0':
+                lastOperandChar = (char) curChar;
+                nextChar();
+                curToken = Token.INT;
+                break;
+            case '1':
+                lastOperandChar = (char) curChar;
+                nextChar();
+                curToken = Token.INT;
+                break;
+
             default:
                 if (!isLetter(curChar)) {
                     throw new ParseException("Illegal character : \"" + (char) curChar + "\"", curPos);

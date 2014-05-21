@@ -5,5 +5,5 @@
  * Time: 17:04
  */
 public enum Token {
-    LPAREN, RPAREN, END, XOR, OR, AND, NOT, CHAR
+    LPAREN, RPAREN, END, XOR, OR, AND, NOT, CHAR, INT
 }

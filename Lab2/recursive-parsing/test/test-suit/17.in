@@ -1,1 +1,1 @@
-((((a))))
+(not(not a xor b and c) xor not d)

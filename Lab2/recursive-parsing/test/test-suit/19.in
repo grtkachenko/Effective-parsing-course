@@ -1,1 +1,1 @@
-(not(not a xor b and c) xor not d)
+w or 0 and w and a xor (not not not 1 xor a or 0 and e)

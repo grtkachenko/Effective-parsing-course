@@ -22,6 +22,8 @@ public class BoolParser {
                 return parseBoolExpr(false);
             case CHAR:
                 return parseBoolExpr(false);
+            case INT:
+                return parseBoolExpr(false);
             case NOT:
                 return parseBoolExpr(false);
             default:
@@ -62,6 +64,8 @@ public class BoolParser {
                 return parseTerm(false);
             case CHAR:
                 return parseTerm(false);
+            case INT:
+                return parseTerm(false);
             case NOT:
                 return parseTerm(false);
             default:
@@ -99,6 +103,9 @@ public class BoolParser {
     private Tree factor() throws ParseException {
         switch (lex.getCurToken()) {
             case CHAR:
+                lex.nextToken();
+                return new Tree(Tree.FACTOR, new Tree("" + lex.getLastOperandChar()));
+            case INT:
                 lex.nextToken();
                 return new Tree(Tree.FACTOR, new Tree("" + lex.getLastOperandChar()));
             case NOT:
