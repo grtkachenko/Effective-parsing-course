@@ -10,7 +10,10 @@ expr:  expr op=(ADD|SUB) term # AddSub
 term:  term op=(MUL|DIV) factor # MulDiv
     | factor # MulDivFactor;
 
-factor:  INT # Int
+factor: deg '^' factor # FactorDeg
+    | deg # SimpleDeg;
+
+deg:  INT # Int
     | (SUB|)VAR # Var
     | (SUB|)'(' expr ')' # Parens;
 

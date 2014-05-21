@@ -88,4 +88,16 @@ public class CalcVisitor extends ArithmeticExpressionsBaseVisitor<Integer> {
         System.out.println(result);
         return result;
     }
+
+    @Override
+    public Integer visitSimpleDeg(@NotNull ArithmeticExpressionsParser.SimpleDegContext ctx) {
+        return visit(ctx.deg());
+    }
+
+    @Override
+    public Integer visitFactorDeg(@NotNull ArithmeticExpressionsParser.FactorDegContext ctx) {
+        int left = visit(ctx.deg());
+        int right = visit(ctx.factor());
+        return (int) Math.pow(left, right);
+    }
 }

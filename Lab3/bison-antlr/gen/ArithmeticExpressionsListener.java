@@ -52,6 +52,17 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	void exitAssign(@NotNull ArithmeticExpressionsParser.AssignContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#SimpleDeg}.
+	 * @param ctx the parse tree
+	 */
+	void enterSimpleDeg(@NotNull ArithmeticExpressionsParser.SimpleDegContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#SimpleDeg}.
+	 * @param ctx the parse tree
+	 */
+	void exitSimpleDeg(@NotNull ArithmeticExpressionsParser.SimpleDegContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#AddSub}.
 	 * @param ctx the parse tree
 	 */
@@ -94,6 +105,17 @@ public interface ArithmeticExpressionsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#FactorDeg}.
+	 * @param ctx the parse tree
+	 */
+	void enterFactorDeg(@NotNull ArithmeticExpressionsParser.FactorDegContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ArithmeticExpressionsParser#FactorDeg}.
+	 * @param ctx the parse tree
+	 */
+	void exitFactorDeg(@NotNull ArithmeticExpressionsParser.FactorDegContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ArithmeticExpressionsParser#MulDivFactor}.

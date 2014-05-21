@@ -68,6 +68,19 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSimpleDeg(@NotNull ArithmeticExpressionsParser.SimpleDegContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSimpleDeg(@NotNull ArithmeticExpressionsParser.SimpleDegContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -114,6 +127,19 @@ public class ArithmeticExpressionsBaseListener implements ArithmeticExpressionsL
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFactorDeg(@NotNull ArithmeticExpressionsParser.FactorDegContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFactorDeg(@NotNull ArithmeticExpressionsParser.FactorDegContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

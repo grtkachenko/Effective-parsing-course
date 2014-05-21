@@ -49,6 +49,14 @@ public class ArithmeticExpressionsBaseVisitor<T> extends AbstractParseTreeVisito
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitSimpleDeg(@NotNull ArithmeticExpressionsParser.SimpleDegContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitAddSub(@NotNull ArithmeticExpressionsParser.AddSubContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -74,6 +82,14 @@ public class ArithmeticExpressionsBaseVisitor<T> extends AbstractParseTreeVisito
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitVar(@NotNull ArithmeticExpressionsParser.VarContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitFactorDeg(@NotNull ArithmeticExpressionsParser.FactorDegContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
