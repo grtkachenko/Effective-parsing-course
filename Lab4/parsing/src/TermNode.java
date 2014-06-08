@@ -22,6 +22,9 @@ public class TermNode extends Node {
         productionList.add(production);
     }
 
+    public List<String> getProductionList() {
+        return productionList;
+    }
 
     @Override
     public String toString() {
