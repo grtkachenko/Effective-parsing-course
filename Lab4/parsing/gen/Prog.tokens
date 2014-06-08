@@ -1,0 +1,16 @@
+LEFT_PAREN=9
+RIGHT_PAREN=10
+TERM_NAME=8
+WS=6
+NEWLINE=5
+T__1=3
+T__0=4
+NON_TERM_NAME=7
+T__3=1
+T__2=2
+'|'=4
+';'=3
+'('=9
+':'=2
+')'=10
+'\''=1

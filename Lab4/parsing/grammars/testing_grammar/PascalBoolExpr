@@ -1,0 +1,15 @@
+LEFT_PAREN : '(';
+RIGHT_PAREN : ')';
+boolexp : term boolexp_prime;
+boolexp_prime : OR term boolexp_prime | XOR term boolexp_prime | ;
+
+term : factor term_prime;
+term_prime : AND factor term_prime | ;
+
+factor:  VAR  | NOT factor |  LEFT_PAREN boolexp RIGHT_PAREN;
+
+VAR : 'a' | 'b' | 'c' | 'd' ;
+AND : 'and' ;
+OR : 'or' ;
+XOR : 'xor' ;
+NOT : 'not' ;
