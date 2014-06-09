@@ -60,6 +60,16 @@ public class LexicalAnalyzer{
             return;
         }
 
+        if ("".equals(curTokenString)) {
+            curToken = Token.EPS;
+            return;
+        }
+
+        if ("".equals(curTokenString)) {
+            curToken = Token.EPS;
+            return;
+        }
+
         if ("a".equals(curTokenString)) {
             curToken = Token.VAR;
             return;
@@ -87,6 +97,11 @@ public class LexicalAnalyzer{
 
         if ("not".equals(curTokenString)) {
             curToken = Token.NOT;
+            return;
+        }
+
+        if ("$".equals(curTokenString)) {
+            curToken = Token.END;
             return;
         }
 

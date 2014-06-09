@@ -14,4 +14,12 @@ public class Production {
         nodes.add(node);
     }
 
+    public int getCount() {
+        return nodes.size();
+    }
+
+    public Node getNode(int pos) {
+        return nodes.get(pos);
+    }
+
 }

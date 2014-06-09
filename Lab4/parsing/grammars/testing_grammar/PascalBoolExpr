@@ -1,5 +1,3 @@
-LEFT_PAREN : '(';
-RIGHT_PAREN : ')';
 boolexp : term boolexp_prime;
 boolexp_prime : OR term boolexp_prime | XOR term boolexp_prime | ;
 
@@ -13,3 +11,5 @@ AND : 'and' ;
 OR : 'or' ;
 XOR : 'xor' ;
 NOT : 'not' ;
+LEFT_PAREN : '(';
+RIGHT_PAREN : ')';

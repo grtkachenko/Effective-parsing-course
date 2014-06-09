@@ -12,6 +12,7 @@ public class TermNode extends Node {
 
     public TermNode(String name) {
         super(name);
+        isTerminal = true;
     }
 
     public void addStringProductions(List<String> productions) {

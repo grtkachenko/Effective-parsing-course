@@ -6,6 +6,7 @@
  */
 public class Node {
     protected String name;
+    protected boolean isTerminal;
 
     public Node(String name) {
         this.name = name;
@@ -16,4 +17,7 @@ public class Node {
         return (getClass() == o.getClass() && name.equals(((Node) o).name));
     }
 
+    public boolean isTerminal() {
+        return isTerminal;
+    }
 }

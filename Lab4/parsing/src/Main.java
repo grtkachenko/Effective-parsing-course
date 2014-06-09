@@ -11,6 +11,7 @@ public class Main {
     private static final String TEST_PATH = "grammars/testing_grammar/PascalBoolExpr";
 
     public static void main(String[] args) throws IOException {
-        Generator.parseFromFile(new File(TEST_PATH));
+        Generator generator = new Generator(new File(TEST_PATH));
+        generator.generateFiles();
     }
 }
