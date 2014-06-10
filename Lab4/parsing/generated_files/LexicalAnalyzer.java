@@ -15,7 +15,7 @@ public class LexicalAnalyzer{
     }
 
     private boolean isBlank(int c) {
-        return c == ' ' || c == '\r' || c == '\n' || c == '\t';
+        return c == -1 || c == ' ' || c == '\r' || c == '\n' || c == '\t';
     }
 
     private void nextChar() throws ParseException {
@@ -35,17 +35,24 @@ public class LexicalAnalyzer{
     }
 
     public void nextToken() throws ParseException {
-        while (isBlank(curChar)) {
-            nextChar();
-        }
-
         if (curChar == -1) {
             curToken = Token.END;
             return;
         }
+        while (isBlank(curChar)) {
+            nextChar();
+        }
+
         StringBuilder curTokenStringBuilder = new StringBuilder();
-        while (!isBlank(curChar)) {
-            curTokenStringBuilder.append((char) curChar);
+        curTokenStringBuilder.append((char) curChar);
+
+        if (curChar >= 'a' && curChar <= 'z') {
+            nextChar();
+            while (!isBlank(curChar) && (curChar != '(') && (curChar != ')')) {
+                curTokenStringBuilder.append((char) curChar);
+                nextChar();
+            }
+        } else {
             nextChar();
         }
         String curTokenString = curTokenStringBuilder.toString();

@@ -1,3 +1,4 @@
+import com.sun.tools.javac.util.Pair;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -32,8 +33,9 @@ public class Generator {
     private NonTermNode startNode;
     private final HashMap<String, NonTermNode> nonTerminals = new HashMap<String, NonTermNode>();
     private final HashMap<String, TermNode> terminals = new HashMap<String, TermNode>();
-    private final HashMap<Node, HashSet<String>> first = new HashMap<Node, HashSet<String>>();
-    private final HashMap<NonTermNode, HashSet<String>> follow = new HashMap<NonTermNode, HashSet<String>>();
+    private final HashMap<Node, HashSet<TermNode>> first = new HashMap<Node, HashSet<TermNode>>();
+    private final HashMap<NonTermNode, HashSet<TermNode>> follow = new HashMap<NonTermNode, HashSet<TermNode>>();
+    private final HashMap<Pair<NonTermNode, TermNode>, Production> predictionTable = new HashMap<Pair<NonTermNode, TermNode>, Production>();
 
     public Generator(File file) {
         this.file = file;
@@ -99,17 +101,21 @@ public class Generator {
         terminals.put(END_NODE_NAME, endNode);
 
         cleanGenerateDirectory();
-        generateParser();
-        generateLexer();
         generateTokenFile();
         computeFirst();
         computeFollow();
+        computeTable();
+        generateLexer();
+        generateParser();
+
         for (Node node : first.keySet()) {
-//            System.out.println(node.name + " - " + first.get(node));
+            System.out.println(node.name + " - " + first.get(node));
         }
+        System.out.println("________________________________");
         for (Node node : follow.keySet()) {
             System.out.println(node.name + " - " + follow.get(node));
         }
+//        System.out.println(predictionTable);
     }
 
 
@@ -127,13 +133,37 @@ public class Generator {
         return nonTerminals.get(name);
     }
 
+    private void computeTable() {
+        for (String name : nonTerminals.keySet()) {
+            for (Production production : nonTerminals.get(name).getProductionList()) {
+                for (TermNode node : first.get(nonTerminals.get(name))) {
+                    predictionTable.put(new Pair<NonTermNode, TermNode>(nonTerminals.get(name), node), production);
+                }
+                boolean isOk = true;
+                for (int i = 0; i < production.getCount(); i++) {
+                    if (!first.get(production.getNode(i)).contains(getTerminalNode(EPS_NODE_NAME))) {
+                        isOk = false;
+                        break;
+                    }
+                }
+                if (isOk) {
+                    for (TermNode node : follow.get(nonTerminals.get(name))) {
+                        predictionTable.put(new Pair<NonTermNode, TermNode>(nonTerminals.get(name), node), production);
+                    }
+                }
+            }
+        }
+
+    }
+
     private void computeFirst() {
         for (String name : terminals.keySet()) {
-            HashSet<String> curFirstSet = new HashSet<String>(terminals.get(name).getProductionList());
+            HashSet<TermNode> curFirstSet = new HashSet<TermNode>();
+            curFirstSet.add(terminals.get(name));
             first.put(terminals.get(name), curFirstSet);
         }
         for (String name : nonTerminals.keySet()) {
-            first.put(nonTerminals.get(name), new HashSet<String>());
+            first.put(nonTerminals.get(name), new HashSet<TermNode>());
         }
 
         while (true) {
@@ -149,7 +179,7 @@ public class Generator {
                             }
                         }
                         if (isOk) {
-                            for (String cur : first.get(production.getNode(i))) {
+                            for (TermNode cur : first.get(production.getNode(i))) {
                                 if (!first.get(nonTerminals.get(name)).contains(cur)) {
                                     first.get(nonTerminals.get(name)).add(cur);
                                     needToBreak = false;
@@ -167,9 +197,9 @@ public class Generator {
 
     private void computeFollow() {
         for (String name : nonTerminals.keySet()) {
-            follow.put(nonTerminals.get(name), new HashSet<String>());
+            follow.put(nonTerminals.get(name), new HashSet<TermNode>());
         }
-        follow.get(startNode).add(END_MARKER);
+        follow.get(startNode).add(getTerminalNode(END_NODE_NAME));
         while (true) {
             boolean needToBreak = true;
             for (String name : nonTerminals.keySet()) {
@@ -185,8 +215,8 @@ public class Generator {
                                     }
                                 }
                                 if (isOk) {
-                                    for (String cur : first.get(production.getNode(j))) {
-                                        if (cur.length() > 0 && !follow.get(production.getNode(i)).contains(cur)) {
+                                    for (TermNode cur : first.get(production.getNode(j))) {
+                                        if (!cur.name.equals(EPS_NODE_NAME) && !follow.get(production.getNode(i)).contains(cur)) {
                                             follow.get(production.getNode(i)).add(cur);
                                             needToBreak = false;
                                         }
@@ -202,8 +232,8 @@ public class Generator {
                                 }
                             }
                             if (isOk) {
-                                for (String cur : follow.get(nonTerminals.get(name))) {
-                                    if (cur.length() > 0 && !follow.get(production.getNode(i)).contains(cur)) {
+                                for (TermNode cur : follow.get(nonTerminals.get(name))) {
+                                    if (!cur.name.equals(EPS_NODE_NAME) && !follow.get(production.getNode(i)).contains(cur)) {
                                         follow.get(production.getNode(i)).add(cur);
                                         needToBreak = false;
                                     }
@@ -225,7 +255,7 @@ public class Generator {
         file.createNewFile();
         PrintWriter out = new PrintWriter(file);
         out.println("import java.io.InputStream;\n" +
-                "import java.text.ParseException;\n");
+                "import java.text.ParseException;\nimport java.util.*;\n");
 
         out.println("public class " + DEFAULT_PARSER_NAME + "{");
         out.println(String.format("    private LexicalAnalyzer lex;\n" +
@@ -233,8 +263,44 @@ public class Generator {
                 "    public Tree parse(InputStream is) throws ParseException {\n" +
                 "        lex = new LexicalAnalyzer(is);\n" +
                 "        lex.nextToken();\n" +
-                "        return null;\n" +
-                "    }"));
+                "        return " + startNode.name.toLowerCase() + "();\n" +
+                "    }\n"));
+
+        for (String nonTermNodeName : nonTerminals.keySet()) {
+            NonTermNode nonTermNode = nonTerminals.get(nonTermNodeName);
+            out.println("    private Tree " + nonTermNode.name.toLowerCase() +"() throws ParseException {\n"
+                    + "        List<Tree> trees = new ArrayList<Tree>();\n" + "        switch (lex.getCurToken()) {\n");
+            for (String termNodeName : terminals.keySet()) {
+                out.print("            case " + termNodeName.toUpperCase() + ":\n");
+                TermNode termNode = terminals.get(termNodeName);
+                Production targetProduction = predictionTable.get(new Pair<NonTermNode, TermNode>(nonTermNode, termNode));
+                if (targetProduction == null) {
+                    out.print("                return null;\n");
+                    continue;
+                }
+                for (Node curNode : targetProduction.getNodes()) {
+                    if (!curNode.isTerminal) {
+                        out.print("                trees.add(" + curNode.name.toLowerCase() + "());\n");
+                    } else {
+                        out.print("                if (lex.getCurToken() != Token." + curNode.name.toUpperCase() + ") {\n" +
+                                "                    throw new ParseException(\") expected at position \" + lex.getCurPos(), lex.getCurPos());\n" +
+                                "                }");
+                        out.print("                trees.add(new Tree(\"" + curNode.name.toUpperCase() + "\"));\n");
+                        out.print("                lex.nextToken();\n");
+                    }
+                }
+
+                out.println("                return new Tree(\"" + nonTermNode.name.toUpperCase() + "\", trees.toArray(new Tree[trees.size()]));");
+            }
+
+            out.println(
+                    "            default:\n" +
+                            "                throw new AssertionError();\n" +
+                            "        }\n" +
+                            "    }");
+        }
+
+
         out.println("}");
         out.close();
     }
@@ -277,7 +343,7 @@ public class Generator {
                 "    }\n" +
                 "\n" +
                 "    private boolean isBlank(int c) {\n" +
-                "        return c == ' ' || c == '\\r' || c == '\\n' || c == '\\t';\n" +
+                "        return c == -1 || c == ' ' || c == '\\r' || c == '\\n' || c == '\\t';\n" +
                 "    }\n" +
                 "\n" +
                 "    private void nextChar() throws ParseException {\n" +
@@ -296,18 +362,26 @@ public class Generator {
                 "    }\n");
 
         out.println("    public void nextToken() throws ParseException {\n" +
-                "        while (isBlank(curChar)) {\n" +
-                "            nextChar();\n" +
-                "        }\n");
-        out.println("        if (curChar == -1) {\n" +
+                "        if (curChar == -1) {\n" +
                 "            curToken = Token.END;\n" +
                 "            return;\n" +
                 "        }\n" +
-                "        StringBuilder curTokenStringBuilder = new StringBuilder();\n" +
-                "        while (!isBlank(curChar)) {\n" +
-                "            curTokenStringBuilder.append((char) curChar);\n" +
+                "        while (isBlank(curChar)) {\n" +
                 "            nextChar();\n" +
-                "        }\n" +
+                "        }\n");
+        out.println(
+                "        StringBuilder curTokenStringBuilder = new StringBuilder();\n" +
+                "        curTokenStringBuilder.append((char) curChar);\n" +
+                        "\n" +
+                        "        if (curChar >= 'a' && curChar <= 'z') {\n" +
+                        "            nextChar();\n" +
+                        "            while (!isBlank(curChar) && (curChar != '(') && (curChar != ')')) {\n" +
+                        "                curTokenStringBuilder.append((char) curChar);\n" +
+                        "                nextChar();\n" +
+                        "            }\n" +
+                        "        } else {\n" +
+                        "            nextChar();\n" +
+                        "        }\n"+
                 "        String curTokenString = curTokenStringBuilder.toString();\n");
         for (String curStringTerminal : terminals.keySet()) {
             for (String productionString : terminals.get(curStringTerminal).getProductionList()) {

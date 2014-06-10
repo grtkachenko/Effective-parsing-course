@@ -22,4 +22,7 @@ public class Production {
         return nodes.get(pos);
     }
 
+    public List<Node> getNodes() {
+        return nodes;
+    }
 }

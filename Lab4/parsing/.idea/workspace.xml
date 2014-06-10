@@ -71,7 +71,52 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Generator.java" line="47" class="Generator$1" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/Generator.java" line="49" class="Generator" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java" line="37" class="LexicalAnalyzer" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java" line="45" class="LexicalAnalyzer" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Generator.java" line="269" class="Generator" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -99,7 +144,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="25" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+            <state line="14" column="26" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,20 +152,81 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Generator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Generator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Generator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="202" column="59" selection-start="8719" selection-end="8749" vertical-scroll-proportion="-5.1153846" vertical-offset="2897" max-vertical-offset="5055">
+            <state line="109" column="0" selection-start="4775" selection-end="5085" vertical-scroll-proportion="1.3392857" vertical-offset="1410" max-vertical-offset="6165">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1043#1064#0" expanded="true" />
-                <element signature="e#1135#1153#0" expanded="true" />
-                <element signature="e#1225#1248#0" expanded="true" />
-                <element signature="e#1328#1358#0" expanded="true" />
-                <element signature="e#2227#2239#0" expanded="true" />
-                <element signature="e#5378#5386#0" expanded="true" />
-                <element signature="e#10554#10562#0" expanded="true" />
+                <element signature="e#1081#1102#0" expanded="true" />
+                <element signature="e#1173#1191#0" expanded="true" />
+                <element signature="e#1265#1290#0" expanded="true" />
+                <element signature="e#1372#1404#0" expanded="true" />
+                <element signature="e#1504#1545#0" expanded="true" />
+                <element signature="e#2414#2426#0" expanded="true" />
+                <element signature="e#6695#6705#0" expanded="true" />
+                <element signature="e#14076#14084#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Production.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Production.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="34" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+              <folding>
+                <element signature="e#492#493#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LexicalAnalyzer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#741#742#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#802#803#0" expanded="true" />
+                <element signature="e#831#832#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generated_files/MyParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="87" column="17" selection-start="3340" selection-end="3340" vertical-scroll-proportion="14.615385" vertical-offset="1685" max-vertical-offset="3375">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#392#398#0" expanded="true" />
+                <element signature="e#2334#2340#0" expanded="true" />
+                <element signature="e#3414#3420#0" expanded="true" />
+                <element signature="e#4505#4511#0" expanded="true" />
+                <element signature="e#7103#7109#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/input">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="73" selection-start="0" selection-end="73" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,31 +240,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Token.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generated_files/Token.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="47" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PascalBoolExpr" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PascalBoolExpr" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="18" selection-start="270" selection-end="270" vertical-scroll-proportion="0.31615925" vertical-offset="0" max-vertical-offset="427">
+            <state line="9" column="18" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Node.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Node.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="33" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-              <folding>
-                <element signature="e#439#440#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -166,46 +252,12 @@
       <file leaf-file-name="TermNode.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TermNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="40" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+            <state line="36" column="19" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="675">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#236#244#0" expanded="true" />
                 <element signature="e#603#604#0" expanded="true" />
                 <element signature="e#640#641#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Production.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Production.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="30" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NonTermNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NonTermNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" vertical-offset="98" max-vertical-offset="540">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#243#255#0" expanded="true" />
-                <element signature="e#516#517#0" expanded="true" />
-                <element signature="e#553#554#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generated_files/MyParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="13" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -224,18 +276,18 @@
         <option value="$PROJECT_DIR$/grammars/parsing_grammar/Parser.g4" />
         <option value="$PROJECT_DIR$/src/Rule.java" />
         <option value="$PROJECT_DIR$/src/Tree.java" />
-        <option value="$PROJECT_DIR$/generated_files/MyParser.java" />
         <option value="$PROJECT_DIR$/test/Test.java" />
-        <option value="$PROJECT_DIR$/generated_files/LexicalAnalyzer.java" />
-        <option value="$PROJECT_DIR$/test/input" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
-        <option value="$PROJECT_DIR$/src/TermNode.java" />
-        <option value="$PROJECT_DIR$/src/Production.java" />
         <option value="$PROJECT_DIR$/src/NonTermNode.java" />
         <option value="$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr" />
         <option value="$PROJECT_DIR$/grammars/parsing_grammar/Prog.g4" />
         <option value="$PROJECT_DIR$/generated_files/Token.java" />
+        <option value="$PROJECT_DIR$/test/input" />
+        <option value="$PROJECT_DIR$/src/TermNode.java" />
+        <option value="$PROJECT_DIR$/src/Production.java" />
+        <option value="$PROJECT_DIR$/generated_files/LexicalAnalyzer.java" />
+        <option value="$PROJECT_DIR$/generated_files/MyParser.java" />
         <option value="$PROJECT_DIR$/src/Generator.java" />
       </list>
     </option>
@@ -632,10 +684,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32959327" sideWeight="0.54291844" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="ANTLR Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.63814867" sideWeight="0.54291844" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="ANTLR Parse Tree" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32959327" sideWeight="0.45708156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.63814867" sideWeight="0.45708156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -694,64 +746,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/input">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="6" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="466" selection-end="466" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="24" selection-start="1413" selection-end="1413" vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="1875">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#761#762#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#820#821#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generated_files/MyParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="33" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
           <folding>
             <element signature="e#439#440#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Production.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="30" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -763,18 +763,6 @@
             <element signature="e#243#255#0" expanded="true" />
             <element signature="e#516#517#0" expanded="true" />
             <element signature="e#553#554#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TermNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="40" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#236#244#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -793,26 +781,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Generator.java">
+    <entry file="file://$PROJECT_DIR$/test/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="59" selection-start="8719" selection-end="8749" vertical-scroll-proportion="-5.1153846" vertical-offset="2897" max-vertical-offset="5055">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1043#1064#0" expanded="true" />
-            <element signature="e#1135#1153#0" expanded="true" />
-            <element signature="e#1225#1248#0" expanded="true" />
-            <element signature="e#1328#1358#0" expanded="true" />
-            <element signature="e#2227#2239#0" expanded="true" />
-            <element signature="e#5378#5386#0" expanded="true" />
-            <element signature="e#10554#10562#0" expanded="true" />
-          </folding>
+        <state line="14" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="270" selection-end="270" vertical-scroll-proportion="0.31615925" vertical-offset="0" max-vertical-offset="427">
+        <state line="9" column="18" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/input">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="73" selection-start="0" selection-end="73" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="427">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TermNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="19" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="675">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#236#244#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Production.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="34" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <folding>
+            <element signature="e#492#493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1980">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#802#803#0" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="26" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generated_files/MyParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="17" selection-start="3340" selection-end="3340" vertical-scroll-proportion="14.615385" vertical-offset="1685" max-vertical-offset="3375">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#392#398#0" expanded="true" />
+            <element signature="e#2334#2340#0" expanded="true" />
+            <element signature="e#3414#3420#0" expanded="true" />
+            <element signature="e#4505#4511#0" expanded="true" />
+            <element signature="e#7103#7109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Generator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="0" selection-start="4775" selection-end="5085" vertical-scroll-proportion="1.3392857" vertical-offset="1410" max-vertical-offset="6165">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1081#1102#0" expanded="true" />
+            <element signature="e#1173#1191#0" expanded="true" />
+            <element signature="e#1265#1290#0" expanded="true" />
+            <element signature="e#1372#1404#0" expanded="true" />
+            <element signature="e#1504#1545#0" expanded="true" />
+            <element signature="e#2414#2426#0" expanded="true" />
+            <element signature="e#6695#6705#0" expanded="true" />
+            <element signature="e#14076#14084#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

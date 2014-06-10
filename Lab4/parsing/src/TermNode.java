@@ -34,6 +34,6 @@ public class TermNode extends Node {
         for (String cur : productionList) {
             stringBuilder.append(cur + " | ");
         }
-        return stringBuilder.toString();
+        return name;
     }
 }
