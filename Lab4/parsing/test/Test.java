@@ -1,3 +1,5 @@
+import org.StructureGraphic.v1.DSutils;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -10,10 +12,7 @@ import java.text.ParseException;
  */
 public class Test {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
-        LexicalAnalyzer lexer = new LexicalAnalyzer(new FileInputStream("test/input"));
-        while (lexer.getCurToken() != Token.END) {
-            lexer.nextToken();
-            System.out.println(lexer.getCurToken().toString());
-        }
+        MyParser parser = new MyParser();
+        DSutils.show(parser.parse(new FileInputStream("test/input")), 100, 50);
     }
 }

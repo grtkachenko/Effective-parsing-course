@@ -17,6 +17,7 @@ import java.util.List;
  * Time: 18:13
  */
 public class Generator {
+    private static final boolean DEBUG = true;
     private static final String GENERATED_FILES_PATH = "generated_files";
     private static final String DEFAULT_PARSER_NAME = "MyParser";
     private static final String DEFAULT_LEXER_NAME = "LexicalAnalyzer";
@@ -107,15 +108,17 @@ public class Generator {
         computeTable();
         generateLexer();
         generateParser();
-
-        for (Node node : first.keySet()) {
-            System.out.println(node.name + " - " + first.get(node));
+        if (DEBUG) {
+            for (Node node : first.keySet()) {
+                System.out.println(node.name + " - " + first.get(node));
+            }
+            System.out.println("________________________________");
+            for (Node node : follow.keySet()) {
+                System.out.println(node.name + " - " + follow.get(node));
+            }
+            System.out.println("________________________________");
+            System.out.println(predictionTable);
         }
-        System.out.println("________________________________");
-        for (Node node : follow.keySet()) {
-            System.out.println(node.name + " - " + follow.get(node));
-        }
-//        System.out.println(predictionTable);
     }
 
 
@@ -136,9 +139,6 @@ public class Generator {
     private void computeTable() {
         for (String name : nonTerminals.keySet()) {
             for (Production production : nonTerminals.get(name).getProductionList()) {
-                for (TermNode node : first.get(nonTerminals.get(name))) {
-                    predictionTable.put(new Pair<NonTermNode, TermNode>(nonTerminals.get(name), node), production);
-                }
                 boolean isOk = true;
                 for (int i = 0; i < production.getCount(); i++) {
                     if (!first.get(production.getNode(i)).contains(getTerminalNode(EPS_NODE_NAME))) {
@@ -182,11 +182,13 @@ public class Generator {
                             for (TermNode cur : first.get(production.getNode(i))) {
                                 if (!first.get(nonTerminals.get(name)).contains(cur)) {
                                     first.get(nonTerminals.get(name)).add(cur);
+                                    predictionTable.put(new Pair<NonTermNode, TermNode>(nonTerminals.get(name), cur), production);
                                     needToBreak = false;
                                 }
                             }
                         }
                     }
+
                 }
             }
             if (needToBreak) {
@@ -209,7 +211,7 @@ public class Generator {
                             for (int j = i + 1; j < production.getCount(); j++) {
                                 boolean isOk = true;
                                 for (int k = i + 1; k < j; k++) {
-                                    if (!first.get(production.getNode(k)).contains("")) {
+                                    if (!first.get(production.getNode(k)).contains(getTerminalNode(EPS_NODE_NAME))) {
                                         isOk = false;
                                         break;
                                     }
@@ -226,7 +228,7 @@ public class Generator {
                             }
                             boolean isOk = true;
                             for (int j = i + 1; j < production.getCount(); j++) {
-                                if (!first.get(production.getNode(j)).contains("")) {
+                                if (!first.get(production.getNode(j)).contains(getTerminalNode(EPS_NODE_NAME))) {
                                     isOk = false;
                                     break;
                                 }
@@ -271,20 +273,25 @@ public class Generator {
             out.println("    private Tree " + nonTermNode.name.toLowerCase() +"() throws ParseException {\n"
                     + "        List<Tree> trees = new ArrayList<Tree>();\n" + "        switch (lex.getCurToken()) {\n");
             for (String termNodeName : terminals.keySet()) {
-                out.print("            case " + termNodeName.toUpperCase() + ":\n");
                 TermNode termNode = terminals.get(termNodeName);
+                if (termNode.name.equals(EPS_NODE_NAME)) {
+                    continue;
+                }
+                out.print("            case " + termNodeName.toUpperCase() + ":\n");
                 Production targetProduction = predictionTable.get(new Pair<NonTermNode, TermNode>(nonTermNode, termNode));
                 if (targetProduction == null) {
-                    out.print("                return null;\n");
                     continue;
                 }
                 for (Node curNode : targetProduction.getNodes()) {
                     if (!curNode.isTerminal) {
                         out.print("                trees.add(" + curNode.name.toLowerCase() + "());\n");
                     } else {
+                        if (curNode.name.equals(EPS_NODE_NAME)) {
+                            continue;
+                        }
                         out.print("                if (lex.getCurToken() != Token." + curNode.name.toUpperCase() + ") {\n" +
                                 "                    throw new ParseException(\") expected at position \" + lex.getCurPos(), lex.getCurPos());\n" +
-                                "                }");
+                                "                }\n");
                         out.print("                trees.add(new Tree(\"" + curNode.name.toUpperCase() + "\"));\n");
                         out.print("                lex.nextToken();\n");
                     }
