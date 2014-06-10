@@ -7,7 +7,6 @@ import java.util.*;
 Map<String, Integer> memory = new HashMap<String, Integer>();
 }
 
-
 calc : calc statement | ;
 
 statement : ID ASSIGN expr ENT_STMT ENDLINE { System.out.println($ID.text + "=" + $expr.value); memory.put($ID.text, $expr.value); }
@@ -15,25 +14,23 @@ statement : ID ASSIGN expr ENT_STMT ENDLINE { System.out.println($ID.text + "=" 
      ;
 
 expr returns[int value]
-  : term {$value = $term.value;}
-  | e1=expr PLUS term {$value = $e1.value + $term.value;}
-  | e2=expr MINUS term {$value = $e2.value - $term.value;}
+  : term expr_prime[$term.value] {$value = $expr_prime.value;}
+  ;
+
+expr_prime[int i] returns[int value]
+  : {$value = $i;}
+  | PLUS term e1=expr_prime[$i + $term.value] {$value = $e1.value;}
+  | MINUS term e2=expr_prime[$i - $term.value] {$value = $e2.value;}
   ;
 
 term returns[int value]
-  : power {$value = $power.value;}
-  | t1=term MUL power {$value = $t1.value * $power.value;}
-  | t2=term DIV power {$value = $t2.value / $power.value;}
+  : factor term_prime[$factor.value] {$value = $term_prime.value;}
   ;
 
-power returns[int value]
-  : minus {$value = $minus.value;}
-  | minus POW p1=power {$value = (int) Math.pow($minus.value, $p1.value);}
-  ;
-
-minus returns[int value]
-  : factor {$value = $factor.value;}
-  | MINUS m1=minus {$value = -$m1.value;}
+term_prime[int i] returns[int value]
+  : {$value = $i;}
+  | MUL factor e3=term_prime[$i * $factor.value] {$value = $e3.value;}
+  | DIV factor e4=term_prime[$i / $factor.value] {$value = $e4.value;}
   ;
 
 factor returns[int value]
@@ -51,7 +48,6 @@ PLUS : '+';
 MINUS : '-';
 MUL : '*';
 DIV : '/';
-POW : '^';
 LEFT_PAREN : '(';
 RIGHT_PAREN : ')';
 WS : [ \t]+ -> skip ;
