@@ -7,4 +7,4 @@ Lab #2. Recursive parser (http://neerc.ifmo.ru/~sta/2013-2014/3b-parsing/02-recu
 
 Lab #3. ANTLR (http://neerc.ifmo.ru/~sta/2013-2014/3b-parsing/03-bison-antlr.pdf)
 
-Lab #4. Parsing (http://neerc.ifmo.ru/~sta/2013-2014/3b-parsing/lab45.html)
+Lab #4. ANTLR-like Lexer/Parser generating system (http://neerc.ifmo.ru/~sta/2013-2014/3b-parsing/lab45.html)
