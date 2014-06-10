@@ -46,6 +46,20 @@ public interface ProgVisitor<T> extends ParseTreeVisitor<T> {
 	T visitNon_term_production(@NotNull ProgParser.Non_term_productionContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link ProgParser#members}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMembers(@NotNull ProgParser.MembersContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ProgParser#header}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHeader(@NotNull ProgParser.HeaderContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link ProgParser#term_production}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

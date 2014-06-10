@@ -1,3 +1,8 @@
+@header {header}
+
+@members {members}
+
+
 boolexp : term boolexp_prime;
 boolexp_prime : OR term boolexp_prime | XOR term boolexp_prime | ;
 

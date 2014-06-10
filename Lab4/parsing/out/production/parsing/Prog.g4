@@ -1,5 +1,9 @@
 grammar Prog;
-prog : ((cur_rule ';' NEWLINE) | NEWLINE)*;
+prog : header? members? (((cur_rule ';' NEWLINE) | NEWLINE)*);
+
+header : '@header' '{' ((.)*?) '}';
+
+members : '@members' '{' ((.)*?) '}';
 
 cur_rule  : NON_TERM_NAME ':' non_term_production ('|' non_term_production)*   # NonTermLabel
         | TERM_NAME ':' term_production ('|' term_production)* # TermLabel;

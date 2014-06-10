@@ -201,15 +201,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Generator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Generator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="13" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="6120">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/Test.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -222,7 +213,7 @@
       <file leaf-file-name="LexicalAnalyzer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="565" max-vertical-offset="1980">
+            <state line="46" column="0" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="475" max-vertical-offset="1890">
               <folding />
             </state>
           </provider>
@@ -231,7 +222,7 @@
       <file leaf-file-name="MyParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generated_files/MyParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="19" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="2595">
+            <state line="47" column="19" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="2565">
               <folding />
             </state>
           </provider>
@@ -240,7 +231,7 @@
       <file leaf-file-name="ArithmeticExpr" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/ArithmeticExpr">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+            <state line="0" column="0" selection-start="0" selection-end="104" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
               <folding />
             </state>
           </provider>
@@ -249,7 +240,16 @@
       <file leaf-file-name="Prog.g4" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammars/parsing_grammar/Prog.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="23" selection-start="432" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="330">
+            <state line="5" column="7" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProgVisitor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gen/ProgVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="7" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="1080">
               <folding />
             </state>
           </provider>
@@ -258,7 +258,7 @@
       <file leaf-file-name="PascalBoolExpr" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="28" selection-start="348" selection-end="348" vertical-scroll-proportion="0.56675065" vertical-offset="0" max-vertical-offset="397">
+            <state line="2" column="17" selection-start="35" selection-end="35" vertical-scroll-proportion="0.07537688" vertical-offset="0" max-vertical-offset="398">
               <folding />
             </state>
           </provider>
@@ -305,8 +305,6 @@
         <option value="$PROJECT_DIR$/src/Rule.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
         <option value="$PROJECT_DIR$/src/NonTermNode.java" />
-        <option value="$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr" />
-        <option value="$PROJECT_DIR$/grammars/parsing_grammar/Prog.g4" />
         <option value="$PROJECT_DIR$/generated_files/Token.java" />
         <option value="$PROJECT_DIR$/src/TermNode.java" />
         <option value="$PROJECT_DIR$/src/Production.java" />
@@ -317,6 +315,9 @@
         <option value="$PROJECT_DIR$/test/Test.java" />
         <option value="$PROJECT_DIR$/test/input" />
         <option value="$PROJECT_DIR$/src/Generator.java" />
+        <option value="$PROJECT_DIR$/grammars/testing_grammar/ArithmeticExpr" />
+        <option value="$PROJECT_DIR$/grammars/parsing_grammar/Prog.g4" />
+        <option value="$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr" />
       </list>
     </option>
   </component>
@@ -498,7 +499,7 @@
       <recent name="$PROJECT_DIR$/grammars/parsing_grammar/gen" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Generator">
     <configuration default="false" name="Generator" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <option name="VM_PARAMETERS" value="" />
@@ -707,20 +708,20 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959327" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.371669" sideWeight="0.54291844" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="ANTLR Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37026647" sideWeight="0.54291844" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="ANTLR Parse Tree" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3709239" sideWeight="0.45708156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37026647" sideWeight="0.45708156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959327" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -944,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="565" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/util/HashMap.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="13" selection-start="1248" selection-end="1248" vertical-scroll-proportion="0.33159268" vertical-offset="398" max-vertical-offset="3000" />
@@ -970,23 +964,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/input">
+    <entry file="file://$PROJECT_DIR$/src/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="45" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="397">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/ArithmeticExpr">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="397">
+        <state line="18" column="13" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="6120">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grammars/parsing_grammar/Prog.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="432" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+        <state line="5" column="7" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/input">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="45" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="397">
           <folding />
         </state>
       </provider>
@@ -998,16 +992,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Generator.java">
+    <entry file="file://$PROJECT_DIR$/generated_files/LexicalAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="6120">
+        <state line="46" column="0" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="565" max-vertical-offset="1980">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/ArithmeticExpr">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="104" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/ProgVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="7" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grammars/testing_grammar/PascalBoolExpr">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="28" selection-start="348" selection-end="348" vertical-scroll-proportion="0.56675065" vertical-offset="0" max-vertical-offset="397">
+        <state line="2" column="17" selection-start="35" selection-end="35" vertical-scroll-proportion="0.07537688" vertical-offset="0" max-vertical-offset="398">
           <folding />
         </state>
       </provider>
