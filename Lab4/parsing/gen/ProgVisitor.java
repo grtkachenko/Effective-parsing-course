@@ -18,6 +18,13 @@ public interface ProgVisitor<T> extends ParseTreeVisitor<T> {
 	T visitTermLabel(@NotNull ProgParser.TermLabelContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link ProgParser#HeaderLabel}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link ProgParser#prog}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -32,6 +39,13 @@ public interface ProgVisitor<T> extends ParseTreeVisitor<T> {
 	T visitNode_non_term_production(@NotNull ProgParser.Node_non_term_productionContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link ProgParser#var}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVar(@NotNull ProgParser.VarContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link ProgParser#NonTermLabel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -39,25 +53,32 @@ public interface ProgVisitor<T> extends ParseTreeVisitor<T> {
 	T visitNonTermLabel(@NotNull ProgParser.NonTermLabelContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link ProgParser#MembersLabel}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ProgParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitType(@NotNull ProgParser.TypeContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link ProgParser#decl_synth}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecl_synth(@NotNull ProgParser.Decl_synthContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link ProgParser#non_term_production}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitNon_term_production(@NotNull ProgParser.Non_term_productionContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link ProgParser#members}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMembers(@NotNull ProgParser.MembersContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link ProgParser#header}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHeader(@NotNull ProgParser.HeaderContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link ProgParser#term_production}.

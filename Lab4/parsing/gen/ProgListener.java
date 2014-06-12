@@ -19,6 +19,17 @@ public interface ProgListener extends ParseTreeListener {
 	void exitTermLabel(@NotNull ProgParser.TermLabelContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ProgParser#HeaderLabel}.
+	 * @param ctx the parse tree
+	 */
+	void enterHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProgParser#HeaderLabel}.
+	 * @param ctx the parse tree
+	 */
+	void exitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ProgParser#prog}.
 	 * @param ctx the parse tree
 	 */
@@ -41,6 +52,17 @@ public interface ProgListener extends ParseTreeListener {
 	void exitNode_non_term_production(@NotNull ProgParser.Node_non_term_productionContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ProgParser#var}.
+	 * @param ctx the parse tree
+	 */
+	void enterVar(@NotNull ProgParser.VarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProgParser#var}.
+	 * @param ctx the parse tree
+	 */
+	void exitVar(@NotNull ProgParser.VarContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ProgParser#NonTermLabel}.
 	 * @param ctx the parse tree
 	 */
@@ -52,6 +74,39 @@ public interface ProgListener extends ParseTreeListener {
 	void exitNonTermLabel(@NotNull ProgParser.NonTermLabelContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ProgParser#MembersLabel}.
+	 * @param ctx the parse tree
+	 */
+	void enterMembersLabel(@NotNull ProgParser.MembersLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProgParser#MembersLabel}.
+	 * @param ctx the parse tree
+	 */
+	void exitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ProgParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterType(@NotNull ProgParser.TypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProgParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitType(@NotNull ProgParser.TypeContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ProgParser#decl_synth}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecl_synth(@NotNull ProgParser.Decl_synthContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProgParser#decl_synth}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecl_synth(@NotNull ProgParser.Decl_synthContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ProgParser#non_term_production}.
 	 * @param ctx the parse tree
 	 */
@@ -61,28 +116,6 @@ public interface ProgListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNon_term_production(@NotNull ProgParser.Non_term_productionContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ProgParser#members}.
-	 * @param ctx the parse tree
-	 */
-	void enterMembers(@NotNull ProgParser.MembersContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ProgParser#members}.
-	 * @param ctx the parse tree
-	 */
-	void exitMembers(@NotNull ProgParser.MembersContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ProgParser#header}.
-	 * @param ctx the parse tree
-	 */
-	void enterHeader(@NotNull ProgParser.HeaderContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ProgParser#header}.
-	 * @param ctx the parse tree
-	 */
-	void exitHeader(@NotNull ProgParser.HeaderContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ProgParser#term_production}.

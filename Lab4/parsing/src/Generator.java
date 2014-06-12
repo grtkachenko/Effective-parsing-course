@@ -58,8 +58,14 @@ public class Generator {
                 }
                 List<Production> productions = new ArrayList<Production>();
 
+                if (ctx.decl_synth() != null) {
+                    System.out.println("Decl synth " + ctx.decl_synth().type().getText() + " " + ctx.decl_synth().var().getText());
+                }
                 for (ProgParser.Non_term_productionContext non_term_productionContext : ctx.non_term_production()) {
                     Production production = new Production();
+                    if (non_term_productionContext.JAVACODE() != null) {
+                        System.out.println("Translating symbols " + non_term_productionContext.JAVACODE().getText());
+                    }
 
                     if (non_term_productionContext.node_non_term_production().isEmpty()) {
                         TermNode node = getTerminalNode(EPS_NODE_NAME);
@@ -94,6 +100,18 @@ public class Generator {
                     }
                 }
                 return super.visitTermLabel(ctx);
+            }
+
+            @Override
+            public Object visitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx) {
+                System.out.println("Header : " + ctx.JAVACODE().getText());
+                return super.visitHeaderLabel(ctx);
+            }
+
+            @Override
+            public Object visitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx) {
+                System.out.println("Members : " + ctx.JAVACODE().getText());
+                return super.visitMembersLabel(ctx);
             }
         };
         visitor.visit(parser.prog());

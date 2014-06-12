@@ -25,6 +25,14 @@ public class ProgBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements P
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitProg(@NotNull ProgParser.ProgContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -41,6 +49,14 @@ public class ProgBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements P
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitVar(@NotNull ProgParser.VarContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitNonTermLabel(@NotNull ProgParser.NonTermLabelContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -49,23 +65,31 @@ public class ProgBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements P
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitType(@NotNull ProgParser.TypeContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDecl_synth(@NotNull ProgParser.Decl_synthContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitNon_term_production(@NotNull ProgParser.Non_term_productionContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitMembers(@NotNull ProgParser.MembersContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitHeader(@NotNull ProgParser.HeaderContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}

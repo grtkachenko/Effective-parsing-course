@@ -29,6 +29,19 @@ public class ProgBaseListener implements ProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterProg(@NotNull ProgParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -55,6 +68,19 @@ public class ProgBaseListener implements ProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVar(@NotNull ProgParser.VarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVar(@NotNull ProgParser.VarContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNonTermLabel(@NotNull ProgParser.NonTermLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -68,6 +94,45 @@ public class ProgBaseListener implements ProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMembersLabel(@NotNull ProgParser.MembersLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterType(@NotNull ProgParser.TypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitType(@NotNull ProgParser.TypeContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecl_synth(@NotNull ProgParser.Decl_synthContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecl_synth(@NotNull ProgParser.Decl_synthContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNon_term_production(@NotNull ProgParser.Non_term_productionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -75,32 +140,6 @@ public class ProgBaseListener implements ProgListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNon_term_production(@NotNull ProgParser.Non_term_productionContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterMembers(@NotNull ProgParser.MembersContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMembers(@NotNull ProgParser.MembersContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterHeader(@NotNull ProgParser.HeaderContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitHeader(@NotNull ProgParser.HeaderContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
