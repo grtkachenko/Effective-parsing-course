@@ -63,51 +63,48 @@ public class MyParser{
     }
 
     private Tree term_prime() throws ParseException {
-        HashMap<String, Object> results = new HashMap<String, Object>();
+        List<Tree> trees = new ArrayList<Tree>();
         switch (lex.getCurToken()) {
 
             case LEFT_PAREN:
             case RIGHT_PAREN:
-                return null;
-
+                return new Tree("TERM_PRIME", trees.toArray(new Tree[trees.size()]));
             case VAR:
             case XOR:
-                return null;
-
+                return new Tree("TERM_PRIME", trees.toArray(new Tree[trees.size()]));
             case NOT:
             case END:
-                return null;
-
+                return new Tree("TERM_PRIME", trees.toArray(new Tree[trees.size()]));
             case AND:
                 if (lex.getCurToken() != Token.AND) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("AND"));
                 lex.nextToken();
-                results.put("factor", factor());
-                results.put("term_prime", term_prime());
-                 return  new Tree("term_prime", new Tree("AND"), (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+                trees.add(factor());
+                trees.add(term_prime());
+                return new Tree("TERM_PRIME", trees.toArray(new Tree[trees.size()]));
             case OR:
-                return null;
-
+                return new Tree("TERM_PRIME", trees.toArray(new Tree[trees.size()]));
             default:
                 throw new AssertionError();
         }
     }
     private Tree pascal_exp() throws ParseException {
-        HashMap<String, Object> results = new HashMap<String, Object>();
+        List<Tree> trees = new ArrayList<Tree>();
         switch (lex.getCurToken()) {
 
             case LEFT_PAREN:
-                results.put("boolexp", boolexp());
-                 return  new Tree("pascal_exp", (Tree) results.get("boolexp")); 
+                trees.add(boolexp());
+                return new Tree("PASCAL_EXP", trees.toArray(new Tree[trees.size()]));
             case RIGHT_PAREN:
             case VAR:
-                results.put("boolexp", boolexp());
-                 return  new Tree("pascal_exp", (Tree) results.get("boolexp")); 
+                trees.add(boolexp());
+                return new Tree("PASCAL_EXP", trees.toArray(new Tree[trees.size()]));
             case XOR:
             case NOT:
-                results.put("boolexp", boolexp());
-                 return  new Tree("pascal_exp", (Tree) results.get("boolexp")); 
+                trees.add(boolexp());
+                return new Tree("PASCAL_EXP", trees.toArray(new Tree[trees.size()]));
             case END:
             case AND:
             case OR:
@@ -116,23 +113,23 @@ public class MyParser{
         }
     }
     private Tree term() throws ParseException {
-        HashMap<String, Object> results = new HashMap<String, Object>();
+        List<Tree> trees = new ArrayList<Tree>();
         switch (lex.getCurToken()) {
 
             case LEFT_PAREN:
-                results.put("factor", factor());
-                results.put("term_prime", term_prime());
-                 return  new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+                trees.add(factor());
+                trees.add(term_prime());
+                return new Tree("TERM", trees.toArray(new Tree[trees.size()]));
             case RIGHT_PAREN:
             case VAR:
-                results.put("factor", factor());
-                results.put("term_prime", term_prime());
-                 return  new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+                trees.add(factor());
+                trees.add(term_prime());
+                return new Tree("TERM", trees.toArray(new Tree[trees.size()]));
             case XOR:
             case NOT:
-                results.put("factor", factor());
-                results.put("term_prime", term_prime());
-                 return  new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+                trees.add(factor());
+                trees.add(term_prime());
+                return new Tree("TERM", trees.toArray(new Tree[trees.size()]));
             case END:
             case AND:
             case OR:
@@ -141,23 +138,23 @@ public class MyParser{
         }
     }
     private Tree boolexp() throws ParseException {
-        HashMap<String, Object> results = new HashMap<String, Object>();
+        List<Tree> trees = new ArrayList<Tree>();
         switch (lex.getCurToken()) {
 
             case LEFT_PAREN:
-                results.put("term", term());
-                results.put("boolexp_prime", boolexp_prime());
-                 return  new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+                trees.add(term());
+                trees.add(boolexp_prime());
+                return new Tree("BOOLEXP", trees.toArray(new Tree[trees.size()]));
             case RIGHT_PAREN:
             case VAR:
-                results.put("term", term());
-                results.put("boolexp_prime", boolexp_prime());
-                 return  new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+                trees.add(term());
+                trees.add(boolexp_prime());
+                return new Tree("BOOLEXP", trees.toArray(new Tree[trees.size()]));
             case XOR:
             case NOT:
-                results.put("term", term());
-                results.put("boolexp_prime", boolexp_prime());
-                 return  new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+                trees.add(term());
+                trees.add(boolexp_prime());
+                return new Tree("BOOLEXP", trees.toArray(new Tree[trees.size()]));
             case END:
             case AND:
             case OR:
@@ -166,35 +163,39 @@ public class MyParser{
         }
     }
     private Tree factor() throws ParseException {
-        HashMap<String, Object> results = new HashMap<String, Object>();
+        List<Tree> trees = new ArrayList<Tree>();
         switch (lex.getCurToken()) {
 
             case LEFT_PAREN:
                 if (lex.getCurToken() != Token.LEFT_PAREN) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("LEFT_PAREN"));
                 lex.nextToken();
-                results.put("boolexp", boolexp());
+                trees.add(boolexp());
                 if (lex.getCurToken() != Token.RIGHT_PAREN) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("RIGHT_PAREN"));
                 lex.nextToken();
-                 return  new Tree("factor", new Tree("("), (Tree) results.get("boolexp"), new Tree(")")); 
+                return new Tree("FACTOR", trees.toArray(new Tree[trees.size()]));
             case RIGHT_PAREN:
             case VAR:
                 if (lex.getCurToken() != Token.VAR) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("VAR"));
                 lex.nextToken();
-                 return  new Tree("factor", new Tree("VAR")); 
+                return new Tree("FACTOR", trees.toArray(new Tree[trees.size()]));
             case XOR:
             case NOT:
                 if (lex.getCurToken() != Token.NOT) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("NOT"));
                 lex.nextToken();
-                results.put("factor", factor());
-                 return  new Tree("factor", new Tree("NOT"), (Tree) results.get("factor")); 
+                trees.add(factor());
+                return new Tree("FACTOR", trees.toArray(new Tree[trees.size()]));
             case END:
             case AND:
             case OR:
@@ -203,37 +204,38 @@ public class MyParser{
         }
     }
     private Tree boolexp_prime() throws ParseException {
-        HashMap<String, Object> results = new HashMap<String, Object>();
+        List<Tree> trees = new ArrayList<Tree>();
         switch (lex.getCurToken()) {
 
             case LEFT_PAREN:
             case RIGHT_PAREN:
-                return null;
-
+                return new Tree("BOOLEXP_PRIME", trees.toArray(new Tree[trees.size()]));
             case VAR:
             case XOR:
                 if (lex.getCurToken() != Token.XOR) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("XOR"));
                 lex.nextToken();
-                results.put("term", term());
-                results.put("boolexp_prime", boolexp_prime());
-                 return  new Tree("boolexp_prime", new Tree("XOR"), (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+                trees.add(term());
+                trees.add(boolexp_prime());
+                return new Tree("BOOLEXP_PRIME", trees.toArray(new Tree[trees.size()]));
             case NOT:
             case END:
-                return null;
-
+                return new Tree("BOOLEXP_PRIME", trees.toArray(new Tree[trees.size()]));
             case AND:
             case OR:
                 if (lex.getCurToken() != Token.OR) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
+                trees.add(new Tree("OR"));
                 lex.nextToken();
-                results.put("term", term());
-                results.put("boolexp_prime", boolexp_prime());
-                 return  new Tree("boolexp_prime", new Tree("OR"), (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+                trees.add(term());
+                trees.add(boolexp_prime());
+                return new Tree("BOOLEXP_PRIME", trees.toArray(new Tree[trees.size()]));
             default:
                 throw new AssertionError();
         }
     }
 }
+

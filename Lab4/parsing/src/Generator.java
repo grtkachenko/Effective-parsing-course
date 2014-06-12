@@ -5,10 +5,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,6 +34,9 @@ public class Generator {
     private final HashMap<Node, HashSet<TermNode>> first = new HashMap<Node, HashSet<TermNode>>();
     private final HashMap<NonTermNode, HashSet<TermNode>> follow = new HashMap<NonTermNode, HashSet<TermNode>>();
     private final HashMap<Pair<NonTermNode, TermNode>, Production> predictionTable = new HashMap<Pair<NonTermNode, TermNode>, Production>();
+    private String header = "";
+    private String members = "";
+
 
     public Generator(File file) {
         this.file = file;
@@ -60,10 +60,13 @@ public class Generator {
 
                 if (ctx.decl_synth() != null) {
                     System.out.println("Decl synth " + ctx.decl_synth().type().getText() + " " + ctx.decl_synth().var().getText());
+                    curNode.setReturnType(ctx.decl_synth().type().getText());
+                    curNode.setReturnVariable(ctx.decl_synth().var().getText());
                 }
                 for (ProgParser.Non_term_productionContext non_term_productionContext : ctx.non_term_production()) {
                     Production production = new Production();
                     if (non_term_productionContext.JAVACODE() != null) {
+                        production.setTranslatingSymbol(removeFirstAndLastChar(non_term_productionContext.JAVACODE().getText()));
                         System.out.println("Translating symbols " + non_term_productionContext.JAVACODE().getText());
                     }
 
@@ -105,12 +108,14 @@ public class Generator {
             @Override
             public Object visitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx) {
                 System.out.println("Header : " + ctx.JAVACODE().getText());
+                header = removeFirstAndLastChar(ctx.JAVACODE().getText());
                 return super.visitHeaderLabel(ctx);
             }
 
             @Override
             public Object visitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx) {
                 System.out.println("Members : " + ctx.JAVACODE().getText());
+                members = removeFirstAndLastChar(ctx.JAVACODE().getText());
                 return super.visitMembersLabel(ctx);
             }
         };
@@ -274,22 +279,24 @@ public class Generator {
         File file = new File(GENERATED_FILES_PATH, DEFAULT_PARSER_NAME + ".java");
         file.createNewFile();
         PrintWriter out = new PrintWriter(file);
+        out.println(header);
         out.println("import java.io.InputStream;\n" +
                 "import java.text.ParseException;\nimport java.util.*;\n");
 
         out.println("public class " + DEFAULT_PARSER_NAME + "{");
+        out.println(members);
         out.println(String.format("    private LexicalAnalyzer lex;\n" +
                 "\n" +
-                "    public Tree parse(InputStream is) throws ParseException {\n" +
+                "    public %s parse(InputStream is) throws ParseException {\n" +
                 "        lex = new LexicalAnalyzer(is);\n" +
                 "        lex.nextToken();\n" +
                 "        return " + startNode.name.toLowerCase() + "();\n" +
-                "    }\n"));
+                "    }\n", startNode.getReturnType()));
 
         for (String nonTermNodeName : nonTerminals.keySet()) {
             NonTermNode nonTermNode = nonTerminals.get(nonTermNodeName);
-            out.println("    private Tree " + nonTermNode.name.toLowerCase() +"() throws ParseException {\n"
-                    + "        List<Tree> trees = new ArrayList<Tree>();\n" + "        switch (lex.getCurToken()) {\n");
+            out.println("    private " + startNode.getReturnType() +  " " + nonTermNode.name.toLowerCase() +"() throws ParseException {\n"
+                    + "        HashMap<String, Object> results = new HashMap<String, Object>();\n" + "        switch (lex.getCurToken()) {\n");
             for (String termNodeName : terminals.keySet()) {
                 TermNode termNode = terminals.get(termNodeName);
                 if (termNode.name.equals(EPS_NODE_NAME)) {
@@ -302,7 +309,7 @@ public class Generator {
                 }
                 for (Node curNode : targetProduction.getNodes()) {
                     if (!curNode.isTerminal) {
-                        out.print("                trees.add(" + curNode.name.toLowerCase() + "());\n");
+                        out.print("                results.put(\"" + curNode.name.toLowerCase() + "\", " + curNode.name.toLowerCase() + "());\n");
                     } else {
                         if (curNode.name.equals(EPS_NODE_NAME)) {
                             continue;
@@ -310,12 +317,34 @@ public class Generator {
                         out.print("                if (lex.getCurToken() != Token." + curNode.name.toUpperCase() + ") {\n" +
                                 "                    throw new ParseException(\") expected at position \" + lex.getCurPos(), lex.getCurPos());\n" +
                                 "                }\n");
-                        out.print("                trees.add(new Tree(\"" + curNode.name.toUpperCase() + "\"));\n");
                         out.print("                lex.nextToken();\n");
                     }
                 }
+                String translatingSymbol = targetProduction.getTranslatingSymbol();
+                if (translatingSymbol != null) {
+                    for (int i = 0; i < translatingSymbol.length();) {
+                        if (translatingSymbol.charAt(i) != '$') {
+                            out.print(translatingSymbol.charAt(i++));
+                        } else {
+                            int nextI = endPointerMemberPosition(translatingSymbol, ++i);
+                            String[] item = parsePointerMember(translatingSymbol, i);
+                            i = nextI;
+                            if ("this".equals(item[0])) {
+                                while (translatingSymbol.charAt(i) != '=') {
+                                    i++;
+                                }
+                                i++;
+                                out.print("                return ");
+                            } else {
+                                out.print("(" + getNonTerminalNode(item[0]).getReturnType() + ") results.get(\"" + item[0] + "\")");
+                            }
+                        }
+                    }
 
-                out.println("                return new Tree(\"" + nonTermNode.name.toUpperCase() + "\", trees.toArray(new Tree[trees.size()]));");
+                } else {
+                    out.println("                return " + (!NonTermNode.VOID_RETURN_TYPE.equals(nonTermNode.getReturnType()) ? null : "") + ";");
+                }
+                out.println();
             }
 
             out.println(
@@ -328,6 +357,19 @@ public class Generator {
 
         out.println("}");
         out.close();
+    }
+
+    private int endPointerMemberPosition(String s, int pos) {
+        int pointIndex = s.indexOf('.', pos);
+        int spaceIndex = pointIndex + 1;
+        while (Character.isLetter(s.charAt(++spaceIndex)));
+        return spaceIndex;
+    }
+
+    private String[] parsePointerMember(String s, int pos) {
+        int pointIndex = s.indexOf('.', pos);
+        int spaceIndex = endPointerMemberPosition(s, pos);
+        return new String[] {s.substring(pos, pointIndex), s.substring(pointIndex + 1, spaceIndex)};
     }
 
     private void generateTokenFile() throws IOException {
@@ -426,5 +468,9 @@ public class Generator {
                 child.delete();
             }
         }
+    }
+
+    private String removeFirstAndLastChar(String string) {
+        return string.substring(1, string.length() - 1);
     }
 }

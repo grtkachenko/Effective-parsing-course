@@ -1,7 +1,7 @@
 grammar Prog;
 WS : [ \t]+ -> skip ;
 
-prog : (((cur_rule ';' NEWLINE) | NEWLINE | header | members)*);
+prog : (NEWLINE* header NEWLINE*) (NEWLINE* members NEWLINE*) (((cur_rule ';' NEWLINE) | NEWLINE)*);
 
 header : '@header' JAVACODE NEWLINE #HeaderLabel;
 

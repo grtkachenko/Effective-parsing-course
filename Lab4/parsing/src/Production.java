@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Production {
     private List<Node> nodes = new ArrayList<Node>();
+    private String translatingSymbol;
 
     public void addNode(Node node) {
         nodes.add(node);
@@ -24,5 +25,13 @@ public class Production {
 
     public List<Node> getNodes() {
         return nodes;
+    }
+
+    public void setTranslatingSymbol(String translatingSymbol) {
+        this.translatingSymbol = translatingSymbol;
+    }
+
+    public String getTranslatingSymbol() {
+        return translatingSymbol;
     }
 }
