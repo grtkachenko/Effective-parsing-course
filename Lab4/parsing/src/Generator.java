@@ -14,13 +14,14 @@ import java.util.*;
  * Time: 18:13
  */
 public class Generator {
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
     private static final String GENERATED_FILES_PATH = "generated_files";
     private static final String DEFAULT_PARSER_NAME = "MyParser";
     private static final String DEFAULT_LEXER_NAME = "LexicalAnalyzer";
     private static final String DEFAULT_TOKEN_FILE_NAME = "Token";
     private static final String EPS_NODE_NAME = "EPS";
     private static final String END_NODE_NAME = "END";
+    private static final String THIS_POINTER_NAME = "this";
     private static final String END_MARKER = "$";
 
     private File file;
@@ -59,15 +60,19 @@ public class Generator {
                 List<Production> productions = new ArrayList<Production>();
 
                 if (ctx.decl_synth() != null) {
-                    System.out.println("Decl synth " + ctx.decl_synth().type().getText() + " " + ctx.decl_synth().var().getText());
+                    if (DEBUG) {
+                        System.out.println("Decl synth " + ctx.decl_synth().type().getText() + " " + ctx.decl_synth().var().getText());
+                    }
                     curNode.setReturnType(ctx.decl_synth().type().getText());
                     curNode.setReturnVariable(ctx.decl_synth().var().getText());
                 }
                 for (ProgParser.Non_term_productionContext non_term_productionContext : ctx.non_term_production()) {
                     Production production = new Production();
                     if (non_term_productionContext.JAVACODE() != null) {
+                        if (DEBUG) {
+                            System.out.println("Translating symbols " + non_term_productionContext.JAVACODE().getText());
+                        }
                         production.setTranslatingSymbol(removeFirstAndLastChar(non_term_productionContext.JAVACODE().getText()));
-                        System.out.println("Translating symbols " + non_term_productionContext.JAVACODE().getText());
                     }
 
                     if (non_term_productionContext.node_non_term_production().isEmpty()) {
@@ -107,14 +112,18 @@ public class Generator {
 
             @Override
             public Object visitHeaderLabel(@NotNull ProgParser.HeaderLabelContext ctx) {
-                System.out.println("Header : " + ctx.JAVACODE().getText());
+                if (DEBUG) {
+                    System.out.println("Header : " + ctx.JAVACODE().getText());
+                }
                 header = removeFirstAndLastChar(ctx.JAVACODE().getText());
                 return super.visitHeaderLabel(ctx);
             }
 
             @Override
             public Object visitMembersLabel(@NotNull ProgParser.MembersLabelContext ctx) {
-                System.out.println("Members : " + ctx.JAVACODE().getText());
+                if (DEBUG) {
+                    System.out.println("Members : " + ctx.JAVACODE().getText());
+                }
                 members = removeFirstAndLastChar(ctx.JAVACODE().getText());
                 return super.visitMembersLabel(ctx);
             }
@@ -196,7 +205,7 @@ public class Generator {
                     for (int i = 0; i < production.getCount(); i++) {
                         boolean isOk = true;
                         for (int j = 0; j < i; j++) {
-                            if (!first.get(production.getNode(j)).contains("")) {
+                            if (!first.get(production.getNode(j)).contains(getTerminalNode(EPS_NODE_NAME))) {
                                 isOk = false;
                                 break;
                             }
@@ -230,7 +239,7 @@ public class Generator {
             for (String name : nonTerminals.keySet()) {
                 for (Production production : nonTerminals.get(name).getProductionList()) {
                     for (int i = 0; i < production.getCount(); i++) {
-                        if (!production.getNode(i).isTerminal) {
+                        if (!production.getNode(i).isTerminal()) {
                             for (int j = i + 1; j < production.getCount(); j++) {
                                 boolean isOk = true;
                                 for (int k = i + 1; k < j; k++) {
@@ -280,13 +289,10 @@ public class Generator {
         file.createNewFile();
         PrintWriter out = new PrintWriter(file);
         out.println(header);
-        out.println("import java.io.InputStream;\n" +
-                "import java.text.ParseException;\nimport java.util.*;\n");
-
+        out.println("import java.io.InputStream;\nimport java.text.ParseException;\nimport java.util.*;\n");
         out.println("public class " + DEFAULT_PARSER_NAME + "{");
         out.println(members);
-        out.println(String.format("    private LexicalAnalyzer lex;\n" +
-                "\n" +
+        out.println(String.format("    private LexicalAnalyzer lex;\n\n" +
                 "    public %s parse(InputStream is) throws ParseException {\n" +
                 "        lex = new LexicalAnalyzer(is);\n" +
                 "        lex.nextToken();\n" +
@@ -316,8 +322,7 @@ public class Generator {
                         }
                         out.print("                if (lex.getCurToken() != Token." + curNode.name.toUpperCase() + ") {\n" +
                                 "                    throw new ParseException(\") expected at position \" + lex.getCurPos(), lex.getCurPos());\n" +
-                                "                }\n");
-                        out.print("                lex.nextToken();\n");
+                                "                }\n                lex.nextToken();\n");
                     }
                 }
                 String translatingSymbol = targetProduction.getTranslatingSymbol();
@@ -329,10 +334,8 @@ public class Generator {
                             int nextI = endPointerMemberPosition(translatingSymbol, ++i);
                             String[] item = parsePointerMember(translatingSymbol, i);
                             i = nextI;
-                            if ("this".equals(item[0])) {
-                                while (translatingSymbol.charAt(i) != '=') {
-                                    i++;
-                                }
+                            if (THIS_POINTER_NAME.equals(item[0])) {
+                                while (translatingSymbol.charAt(i++) != '=');
                                 i++;
                                 out.print("                return ");
                             } else {
@@ -347,13 +350,8 @@ public class Generator {
                 out.println();
             }
 
-            out.println(
-                    "            default:\n" +
-                            "                throw new AssertionError();\n" +
-                            "        }\n" +
-                            "    }");
+            out.println("            default:\n                throw new AssertionError();\n        }\n    }");
         }
-
 
         out.println("}");
         out.close();
@@ -377,7 +375,6 @@ public class Generator {
         file.createNewFile();
         PrintWriter out = new PrintWriter(file);
 
-
         out.print("public enum " + DEFAULT_TOKEN_FILE_NAME + " {\n    ");
         List<String> tokenNames = new ArrayList<String>(terminals.keySet());
         for (int i = 0; i < tokenNames.size(); i++) {
@@ -392,17 +389,9 @@ public class Generator {
         File file = new File(GENERATED_FILES_PATH, DEFAULT_LEXER_NAME + ".java");
         file.createNewFile();
         PrintWriter out = new PrintWriter(file);
-        out.println("import java.io.IOException;\n" +
-                "import java.io.InputStream;\n" +
-                "import java.text.ParseException;\n");
-
+        out.println("import java.io.IOException;\nimport java.io.InputStream;\nimport java.text.ParseException;\n");
         out.println("public class " + DEFAULT_LEXER_NAME + "{");
-
-        out.println("    private InputStream is;\n" +
-                "    private int curChar;\n" +
-                "    private int curPos;\n" +
-                "    private Token curToken;\n");
-
+        out.println("    private InputStream is;\n    private int curChar;\n    private int curPos;\n    private Token curToken;\n");
         out.println("    public LexicalAnalyzer(InputStream is) throws ParseException {\n" +
                 "        this.is = is;\n" +
                 "        curPos = 0;\n" +
@@ -452,8 +441,7 @@ public class Generator {
                 "        String curTokenString = curTokenStringBuilder.toString();\n");
         for (String curStringTerminal : terminals.keySet()) {
             for (String productionString : terminals.get(curStringTerminal).getProductionList()) {
-                out.println(String.format("        if (\"%s\".equals(curTokenString)) {\n" +
-                        "            curToken = Token.%s;\n            return;\n        }\n", productionString, curStringTerminal.toUpperCase()));
+                out.println(String.format("        if (\"%s\".equals(curTokenString)) {\n            curToken = Token.%s;\n            return;\n        }\n", productionString, curStringTerminal.toUpperCase()));
             }
         }
         out.println("    }\n}");

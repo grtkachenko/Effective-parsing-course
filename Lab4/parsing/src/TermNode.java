@@ -15,10 +15,6 @@ public class TermNode extends Node {
         isTerminal = true;
     }
 
-    public void addStringProductions(List<String> productions) {
-        productionList.addAll(productions);
-    }
-
     public void addStringProduction(String production) {
         productionList.add(production);
     }
