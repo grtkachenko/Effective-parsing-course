@@ -68,19 +68,6 @@ public class ProgBaseListener implements ProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar(@NotNull ProgParser.VarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVar(@NotNull ProgParser.VarContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterNonTermLabel(@NotNull ProgParser.NonTermLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}

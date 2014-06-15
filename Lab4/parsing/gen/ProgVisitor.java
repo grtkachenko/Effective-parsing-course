@@ -39,13 +39,6 @@ public interface ProgVisitor<T> extends ParseTreeVisitor<T> {
 	T visitNode_non_term_production(@NotNull ProgParser.Node_non_term_productionContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link ProgParser#var}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVar(@NotNull ProgParser.VarContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link ProgParser#NonTermLabel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

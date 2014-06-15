@@ -85,7 +85,7 @@ public class MyParser{
                 lex.nextToken();
                 results.put("factor", factor());
                 results.put("term_prime", term_prime());
-                 return new Tree("term_prime", new Tree("AND"), (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+ return new Tree("term_prime", new Tree("AND"), (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
             case OR:
                 return null;
 
@@ -99,15 +99,15 @@ public class MyParser{
 
             case LEFT_PAREN:
                 results.put("boolexp", boolexp());
-                 return new Tree("pascal_exp", (Tree) results.get("boolexp")); 
+ return new Tree("pascal_exp", (Tree) results.get("boolexp")); 
             case RIGHT_PAREN:
             case VAR:
                 results.put("boolexp", boolexp());
-                 return new Tree("pascal_exp", (Tree) results.get("boolexp")); 
+ return new Tree("pascal_exp", (Tree) results.get("boolexp")); 
             case XOR:
             case NOT:
                 results.put("boolexp", boolexp());
-                 return new Tree("pascal_exp", (Tree) results.get("boolexp")); 
+ return new Tree("pascal_exp", (Tree) results.get("boolexp")); 
             case END:
             case AND:
             case OR:
@@ -122,17 +122,17 @@ public class MyParser{
             case LEFT_PAREN:
                 results.put("factor", factor());
                 results.put("term_prime", term_prime());
-                 return new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+ return new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
             case RIGHT_PAREN:
             case VAR:
                 results.put("factor", factor());
                 results.put("term_prime", term_prime());
-                 return new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+ return new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
             case XOR:
             case NOT:
                 results.put("factor", factor());
                 results.put("term_prime", term_prime());
-                 return new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
+ return new Tree("term", (Tree) results.get("factor"), (Tree) results.get("term_prime")); 
             case END:
             case AND:
             case OR:
@@ -147,17 +147,17 @@ public class MyParser{
             case LEFT_PAREN:
                 results.put("term", term());
                 results.put("boolexp_prime", boolexp_prime());
-                 return new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+ return new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
             case RIGHT_PAREN:
             case VAR:
                 results.put("term", term());
                 results.put("boolexp_prime", boolexp_prime());
-                 return new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+ return new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
             case XOR:
             case NOT:
                 results.put("term", term());
                 results.put("boolexp_prime", boolexp_prime());
-                 return new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+ return new Tree("boolexp", (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
             case END:
             case AND:
             case OR:
@@ -179,14 +179,14 @@ public class MyParser{
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
                 lex.nextToken();
-                 return new Tree("factor", new Tree("("), (Tree) results.get("boolexp"), new Tree(")")); 
+ return new Tree("factor", new Tree("("), (Tree) results.get("boolexp"), new Tree(")")); 
             case RIGHT_PAREN:
             case VAR:
                 if (lex.getCurToken() != Token.VAR) {
                     throw new ParseException(") expected at position " + lex.getCurPos(), lex.getCurPos());
                 }
                 lex.nextToken();
-                 return new Tree("factor", new Tree("VAR")); 
+ return new Tree("factor", new Tree("VAR")); 
             case XOR:
             case NOT:
                 if (lex.getCurToken() != Token.NOT) {
@@ -194,7 +194,7 @@ public class MyParser{
                 }
                 lex.nextToken();
                 results.put("factor", factor());
-                 return new Tree("factor", new Tree("NOT"), (Tree) results.get("factor")); 
+ return new Tree("factor", new Tree("NOT"), (Tree) results.get("factor")); 
             case END:
             case AND:
             case OR:
@@ -218,7 +218,7 @@ public class MyParser{
                 lex.nextToken();
                 results.put("term", term());
                 results.put("boolexp_prime", boolexp_prime());
-                 return new Tree("boolexp_prime", new Tree("XOR"), (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+ return new Tree("boolexp_prime", new Tree("XOR"), (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
             case NOT:
             case END:
                 return null;
@@ -231,7 +231,7 @@ public class MyParser{
                 lex.nextToken();
                 results.put("term", term());
                 results.put("boolexp_prime", boolexp_prime());
-                 return new Tree("boolexp_prime", new Tree("OR"), (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
+ return new Tree("boolexp_prime", new Tree("OR"), (Tree) results.get("term"), (Tree) results.get("boolexp_prime")); 
             default:
                 throw new AssertionError();
         }

@@ -15,9 +15,8 @@ node_non_term_production : NON_TERM_NAME | TERM_NAME;
 term_production : ('\'' (NON_TERM_NAME | LEFT_PAREN | RIGHT_PAREN) '\'')*;
 
 
-decl_synth : 'returns' '[' type var ']';
+decl_synth : 'returns' '[' type ']';
 type : NON_TERM_NAME | TERM_NAME | MIX_CASE_NAME;
-var : NON_TERM_NAME | TERM_NAME | MIX_CASE_NAME;
 
 NEWLINE:'\r'? '\n' ;
 NON_TERM_NAME : [_a-z]+;

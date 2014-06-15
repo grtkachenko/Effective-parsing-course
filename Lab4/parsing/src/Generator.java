@@ -61,10 +61,9 @@ public class Generator {
 
                 if (ctx.decl_synth() != null) {
                     if (DEBUG) {
-                        System.out.println("Decl synth " + ctx.decl_synth().type().getText() + " " + ctx.decl_synth().var().getText());
+                        System.out.println("Decl synth " + ctx.decl_synth().type().getText());
                     }
                     curNode.setReturnType(ctx.decl_synth().type().getText());
-                    curNode.setReturnVariable(ctx.decl_synth().var().getText());
                 }
                 for (ProgParser.Non_term_productionContext non_term_productionContext : ctx.non_term_production()) {
                     Production production = new Production();
@@ -334,13 +333,7 @@ public class Generator {
                             int nextI = endPointerMemberPosition(translatingSymbol, ++i);
                             String[] item = parsePointerMember(translatingSymbol, i);
                             i = nextI;
-                            if (THIS_POINTER_NAME.equals(item[0])) {
-                                while (translatingSymbol.charAt(i++) != '=');
-                                i++;
-                                out.print("                return ");
-                            } else {
-                                out.print("(" + getNonTerminalNode(item[0]).getReturnType() + ") results.get(\"" + item[0] + "\")");
-                            }
+                            out.print("(" + getNonTerminalNode(item[0]).getReturnType() + ") results.get(\"" + item[0] + "\")");
                         }
                     }
 

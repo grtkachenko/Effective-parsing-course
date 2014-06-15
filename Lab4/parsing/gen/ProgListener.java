@@ -52,17 +52,6 @@ public interface ProgListener extends ParseTreeListener {
 	void exitNode_non_term_production(@NotNull ProgParser.Node_non_term_productionContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ProgParser#var}.
-	 * @param ctx the parse tree
-	 */
-	void enterVar(@NotNull ProgParser.VarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ProgParser#var}.
-	 * @param ctx the parse tree
-	 */
-	void exitVar(@NotNull ProgParser.VarContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link ProgParser#NonTermLabel}.
 	 * @param ctx the parse tree
 	 */

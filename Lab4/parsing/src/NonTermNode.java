@@ -11,7 +11,6 @@ public class NonTermNode extends Node {
     public static final String VOID_RETURN_TYPE = "void";
     private List<Production> productionList = new ArrayList<Production>();
     private String returnType = VOID_RETURN_TYPE;
-    private String returnVariable;
 
     public NonTermNode(String name) {
         super(name);
@@ -37,13 +36,5 @@ public class NonTermNode extends Node {
 
     public void setReturnType(String returnType) {
         this.returnType = returnType;
-    }
-
-    public String getReturnVariable() {
-        return returnVariable;
-    }
-
-    public void setReturnVariable(String returnVariable) {
-        this.returnVariable = returnVariable;
     }
 }
